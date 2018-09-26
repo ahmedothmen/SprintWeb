@@ -1,0 +1,4 @@
+services:
+#    host_experience.example:
+#        class: Host\ExperienceBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

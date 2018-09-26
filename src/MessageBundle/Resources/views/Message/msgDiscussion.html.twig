@@ -1,0 +1,173 @@
+{% extends is_granted('ROLE_SUPER_ADMIN') ? "back.html.twig" : "front.html.twig" %}
+
+    {% block body %}
+        {% if is_granted('ROLE_SUPER_ADMIN') %}
+
+            <body class="compose-modal">
+            <div class="prtm-wrapper">
+            <div class="prtm-main">
+            <div class="prtm-content-wrapper">
+                <div class="prtm-content">
+                    <div class="prtm-page-bar">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item text-uppercase">
+                                <h3>Mail Service</h3></li>
+                            <li class="breadcrumb-item"><a href="{{ path('my_app_user_homepageB') }}">Home</a>
+                            </li>
+                            <li class="breadcrumb-item"><a href="{{ path('message_byUser') }}" class="active">Mail
+                                    Service</a></li>
+                        </ul>
+                    </div>
+                    <div class="mail-style">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-4 col-sm-12 mail-inbox"><a
+                                        class="btn btn-danger btn-lg btn-block mrgn-b-md"
+                                        href="{{ path('message_new') }}">Compose</a>
+                                <div class="prtm-full-block pad-tb-sm overflow-wrapper">
+                                    <div class="mrgn-b-md">
+                                        <ul class="email-tabs nav nav-tabs tabs-left">
+                                            <li class="active">
+                                                <a data-toggle="tab" href="#email-inbox" aria-expanded="true">
+                                                    <span class="mrgn-r-sm"><i class="fa fa-inbox"></i></span>
+                                                    Inbox<span class="badge badge-danger pull-right">{{ count }}</span>
+                                                </a>
+                                            </li>
+                                            <li><a data-toggle="tab" href="#starred-emails"
+                                                   aria-expanded="false"><span class="mrgn-r-sm"><i
+                                                                class="fa fa-rocket"></i></span> Spam</a></li>
+                                            <li><a data-toggle="tab" href="#emails-draft" aria-expanded="false"><span
+                                                            class="mrgn-r-sm"><i class="fa fa-trash"></i></span>
+                                                    Trash</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="email-labels pad-all-sm">
+                                        <h5 class="base-dark">Labels</h5>
+                                        <ul class="list-unstyled mrgn-all-none">
+                                            <li class="mrgn-b-xs"><a class="gray" href="javascript:;">
+                                                    Work
+                                                    <span class="label-info pull-right square-15"> </span>
+                                                </a></li>
+                                            <li class="mrgn-b-xs"><a class="gray" href="javascript:;">
+                                                    Private
+                                                    <span class="label-warning pull-right square-15"> </span>
+                                                </a></li>
+                                            <li class="mrgn-b-xs"><a class="gray" href="javascript:;">
+                                                    Client
+                                                    <span class="label-success pull-right square-15"> </span>
+                                                </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-10 col-md-8 col-sm-12 mail-content">
+                                <div class="prtm-full-block inner-acccordians">
+                                    <div id="panel-drop-2" class="collapse in">
+                                        <div class="pad-all-md">
+                                            {% for m in messages %}
+                                            {% if m.isRead ==0 %}
+                                            <div class="panel panel-primary">
+                                                {% else %}
+                                                <div class="panel panel-default">
+                                                    {% endif %}
+                                                    <div class="panel-heading pos-relative pad-all-md"
+                                                         id="heading-2">
+                                                        <h4 class="panel-title">
+                                                            <a class="accordion-toggle collapsed show"
+                                                               data-toggle="collapse"
+                                                               data-parent="#accordion"
+                                                               href="#collapse{{ m.id }}">
+                                                                <span>Subject : {{ m.subject}} </span>
+                                                                <span style="margin-left: 470px;"> {{ m.date|date("m/d")}} -
+
+                                                                {{ m.time|date("h:m") }}</span>
+                                                                </a>
+
+
+
+                                                        </h4></div>
+                                                    <div id="collapse{{ m.id }}"
+                                                         class="panel-collapse collapse" role="tabpanel"
+                                                         aria-labelledby="heading-2">
+
+                                                        <div style="max-width: 800px;
+                                                                    overflow: hidden;
+                                                                text-overflow: ellipsis;
+                                                                white-space: nowrap;" class="panel-body">
+                                                            <a href="{{ path('message_show', { 'id': m.id }) }}"
+                                                               class="gray">{{ m.contenu|raw }}</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        {% else %}
+            <body class="enable-fixed-header enable-inview-animations">
+            <!-- CORE : begin -->
+            <div id="core" class="page-search-results">
+
+                <div class="page-header">
+                    <div class=" banner-bg-s">
+                        <div class="banner-bg-item-s"><img src="{{ asset('dummies/msg3.jpg') }}" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- MAIN WRAPPER : begin -->
+                <div class="main-wrapper-container">
+                    <div class="container">
+                        <div id="main-wrapper">
+                            <div class="row">
+                                <div class="col-md-8 col-md-push-4">
+
+                                    <!-- PROPERTIES LISTING : begin -->
+                                    <!-- PROPERTIES LISTING : end -->
+                                </div>
+
+                                <div class="col-md-4 col-md-pull-8">
+                                    <!-- PROPERTIES SEARCH : begin -->
+                                    <aside class="properties-search">
+                                        <h3 class="properties-search-title">Mail Service</h3>
+
+                                        <!-- PROPERTIES SEARCH BASIC : begin -->
+                                        <div class="properties-search-basic ">
+                                            <div class="additional-filter toggle-container">
+                                                <ul class="custom-list additional-filter-list">
+                                                    <li><a class="button active" href=""><i class="fa fa-inbox"></i>
+                                                            Compose</a></li>
+                                                    <hr class="form-divider">
+                                                    <hr class="content-divider color-transparent">
+                                                    <li><a class="button " href="#">Inbox</a></li>
+                                                    <hr class="form-divider">
+                                                    <li><a class="button " href="#">Spam</a></li>
+                                                    <hr class="form-divider">
+                                                    <li><a class="button " href="#">Trash</a></li>
+                                                    <hr class="form-divider">
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <!-- PROPERTIES SEARCH BASIC : end -->
+                                    </aside>
+                                    <!-- PROPERTIES SEARCH : end -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- MAIN WRAPPER : end -->
+
+            </div>
+            <!-- CORE : end -->
+
+            </body>
+        {% endif %}
+    {% endblock %}

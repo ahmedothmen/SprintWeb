@@ -1,0 +1,49 @@
+{% extends 'front.html.twig' %}
+{% block body %}
+    <div class="container">
+    <div class="row">
+    <div class="col-md-3"></div>
+    <div class="col-md-6">
+    <div class="form-top">
+        <div class="form-top-left">
+            <style>
+                h3,p{color:dodgerblue}
+
+            </style>
+            <h3>Modification</h3>
+            <p>Formulaire de modification d'avis   <i class="fa fa-pencil"></i></p>
+
+        </div>
+
+    </div>
+    <div class="form-bottom">
+    {{ form_start(form) }}
+    <div class="form-group">
+        {{ form_errors(form.avis) }}
+        {{ form_label(form.avis) }}
+        {{ form_widget(form.avis,{'attr' : {'class' : 'form-control', 'placeholder' : 'Avis'|trans}}) }}
+    </div>
+
+    <div class="form-group">
+        {{ form_errors(form.rating) }}
+        {{ form_label(form.rating) }}
+        {{ form_widget(form.rating) }}
+    </div>
+        <div class="form-group">
+            {% form_theme form 'ReCaptchaBundle::form_div_layout.html.twig' %}
+            {{ form_errors(form.captcha) }}
+            {{ form_widget(form.captcha) }}
+        </div>
+        <br><br>
+        <input type="submit" value="Modifier" class="btn btn-success"  onclick="return confirm('etes vous sur de vouloir modifier cet avis ?')">
+        <a href="{{ path('avis_ajouter') }}" class="btn btn-danger">Annuler</a>
+
+        {{ form_end(form) }}
+        <br><br>
+    </div>
+    </div>
+        <div class="col-md-3"></div>
+    </div>
+    </div>
+
+{% endblock %}

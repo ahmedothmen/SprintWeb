@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Propriete</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idp</th>
+                <td>{{ propriete.idP }}</td>
+            </tr>
+            <tr>
+                <th>Categoriepropriete</th>
+                <td>{{ propriete.categoriepropriete }}</td>
+            </tr>
+            <tr>
+                <th>Typepropriete</th>
+                <td>{{ propriete.typepropriete }}</td>
+            </tr>
+            <tr>
+                <th>Pays</th>
+                <td>{{ propriete.pays }}</td>
+            </tr>
+            <tr>
+                <th>Ville</th>
+                <td>{{ propriete.ville }}</td>
+            </tr>
+            <tr>
+                <th>Rue</th>
+                <td>{{ propriete.rue }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ propriete.titre }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ propriete.prix }}</td>
+            </tr>
+            <tr>
+                <th>Nbrchambre</th>
+                <td>{{ propriete.nbrchambre }}</td>
+            </tr>
+            <tr>
+                <th>Nbrvoyageur</th>
+                <td>{{ propriete.nbrvoyageur }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ propriete.description }}</td>
+            </tr>
+            <tr>
+                <th>Animaux</th>
+                <td>{% if propriete.animaux %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Fumeur</th>
+                <td>{% if propriete.fumeur %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Alcool</th>
+                <td>{% if propriete.alcool %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Enfant</th>
+                <td>{% if propriete.enfant %}Yes{% else %}No{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Idu</th>
+                <td>{{ propriete.idU }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('propriete_showAll') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('propriete_edit', { 'id': propriete.idP }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

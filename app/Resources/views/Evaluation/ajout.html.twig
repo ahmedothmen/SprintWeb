@@ -1,0 +1,112 @@
+{% extends 'front.html.twig' %}
+{% block body %}
+    <form method="post">
+
+
+        <center><h1 class="bg-warning">Tunis</h1></center><hr>
+        {% for flash_message in app.session.flashbag.get('notice') %}
+            <div class="alert alert-success"><center><h4> {{ flash_message }} <i class="fa fa-smile-o"></i> </h4></center></div>
+        {% endfor %}
+
+
+
+        <link href="{{ asset('Slider/css/bootstrap.min.css') }}" rel="stylesheet">
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <script type="text/javascript" src="{{ asset('fancybox-2.1.5/source/jquery.fancybox.js') }}"></script>
+        <link href="{{ asset('fancybox-2.1.5/source/jquery.fancybox.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('font-awesome-4.7.0/css/font-awesome.min.css') }}">
+<meta charset="utf-8">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-15">
+                    <div class="ism-slider" id="my-slider">
+                        <ol>
+                            <li>
+                                <img src="{{ asset('Slider/images/1.jpg') }}">
+                                <div class="ism-caption ism-caption-0">Mon experience en Tunis</div>
+                            </li>
+                            <li>
+                                <img src="{{ asset('Slider/images/2.jpg') }}">
+                                <div class="ism-caption ism-caption-0">Mon experience en Tunis</div>
+                            </li>
+                            <li>
+                                <img src="{{ asset('Slider/images/3.jpg') }}">
+                                <div class="ism-caption ism-caption-0">Mon experience en Tunis</div>
+                            </li>
+                        </ol>
+                    </div>
+
+                    <form method="post">
+                        <center><h2 class="bg-info">Ajouter avis</h2></center><hr>
+                    </form>
+                    {% for flash_message in app.session.flashbag.get('notice') %}
+                        <div class="alert alert-success"><center><h4> {{ flash_message }} <i class="fa fa-smile-o"></i> </h4></center></div>
+                    {% endfor %}
+                    {% for flash_message in app.session.flashbag.get('alert') %}
+                        <div class="alert alert-danger"><center><i class="fa fa-exclamation-triangle">   {{ flash_message }}</i></center></div>
+                    {% endfor %}
+                    <!-- jQuery -->
+                    <script src="{{ asset('Slider/js/jquery.js') }}"></script>
+                    <!-- Bootstrap Core JavaScript -->
+                    <script src="{{ asset('Slider/js/bootstrap.min.js') }}"></script>
+                      Moyenne des notes  {{ moy|rating }}
+                    <h4><b>{{ evaluations.getTotalItemCount }} avis / vote(s) sur cette experience.  {{ facebookButton() }} </b></h4>
+                    {{ twitterButton() }} {{ googleplusButton() }}
+                    <table class="table table-condensed" >
+                        <thead>
+                        <tr>
+                            <th><i class="fa fa-sort-alpha-desc"> {{ knp_pagination_sortable(evaluations,'Username'|trans,'evaluation.user') }}</i></th>
+                            <th>Avis</th>
+                            <th>Date</th>
+                            <th>Heure</th>
+                            <th><i class="fa fa-sort-numeric-desc"> {{ knp_pagination_sortable(evaluations,'Noter'|trans,'evaluation.rating') }}</i></th>
+                             {% for evaluation in evaluations %}
+                                 {% if evaluation.user.id==id %}
+                                      <th></th>
+                                 {% endif %}
+                             {% endfor %}
+
+                        </tr>
+                        </thead>
+
+                        {% for evaluation in evaluations %}
+                            <tr>
+                                <td>{{ evaluation.user.username }}</td>
+                                <td>{{ evaluation.avis }}</td>
+                                <td>{{ evaluation.date|date('Y-m-d') }}</td>
+                                <td>{{ evaluation.time|date('H:i:s') }}</td>
+                                <td> {{ evaluation.rating|rating }}</td>
+                                <td>
+                                    {% if evaluation.user.id==id %}
+                                        <a class="btn btn-danger" href="{{ path('avis_supprimer',{id:evaluation.id})}}" onclick="return confirm('Etes vous sur de vouloir supprimer cet avis ?')"><i class="fa fa-trash-o"></i></a>
+                                        <a class="btn btn-success" href="{{ path('avis_modifier',{id:evaluation.id})}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                   <center> <div class="navigation">{{ knp_pagination_render(evaluations) }}</div></center>
+                    <style>
+                        h6,h3{color: red}
+                        #ic{color: #006dcc  }
+                    </style>
+                    {% form_theme form 'ReCaptchaBundle::form_div_layout.html.twig' %}
+
+                    <i id="ic" class="fa fa-star"> {{ form_label(form.rating) }}</h5></i>
+                    <h6>{{ form_errors(form.rating) }}</h6>
+                    {{ form_widget(form.rating,{ 'value': '' }) }}
+                    <br>
+                    <i id="ic" class="fa fa-pencil">  {{ form_label(form.avis) }}</i>
+                    <h6>{{ form_errors(form.avis) }}</h6>
+                    {{ form_widget(form.avis,{ 'value': '' }) }}
+                    {{ form_widget(form.captcha,{ 'value': '' }) }}
+                    <hr>
+                    <center><button class="button" type="submit"><i class="fa fa-plus-circle" aria-hidden="true"></i>  Ajouter votre avis</button></center>
+                    {{ form_rest(form) }}<br>
+        </div>
+            </div>
+        </div>
+        </body>
+    </form>
+{% endblock %}

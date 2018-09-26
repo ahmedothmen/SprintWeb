@@ -1,0 +1,55 @@
+{% extends 'back.html.twig' %}
+
+{% block body %}
+    {% for flash_message in app.session.flashbag.get('notice') %}
+        <div class="alert alert-success"><center>{{ flash_message }}</center></div>
+    {% endfor %}
+    <div class="data-table-style">
+        <div class="prtm-block pos-relative">
+            <div class="prtm-block-title mrgn-b-lg">
+                <div class="caption">
+                    <center><h3 class="text-capitalize">Liste des commentaires</h3></center>
+                </div>
+                <div class="contextual-link">
+                    <div class="dropdown display-ib">
+                        <a href="javascript:;" class="mrgn-l-xs" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false"><i class="fa fa-cog fa-lg base-dark"></i></a>
+                        <ul class="dropdown-menu dropdown-arrow dropdown-menu-right">
+                            <li>
+                                <a href="javascript:;"> <i class="fa fa-trash-o"></i> <span class="mrgn-l-sm">Delete</span> </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="prtm-content-wrapper loaded-block">
+                <div class="prtm-content">
+                    <div class="dataTables_wrapper">
+                        <div class="table-responsive">
+
+                            <table class="table table-hover dataTable" data-table="table-button" data-buttons="['copy', 'csv', 'excel', 'pdf', 'print']">
+                                <thead>
+                                <tr>
+                                    <th>Utilisateur</th>
+                                    <th>Contenu</th>
+                                    <th>Note</th>
+                                    <th>Date</th>
+                                    <th>Supp.</th>
+                                </tr>
+                                </thead>
+                                {% for commentaire in commentaires %}
+                                    <tr>
+                                        <td>{{ commentaire.idU }}</td>
+                                        <td>{{ commentaire.contenu }}</td>
+                                        <td>{{ commentaire.rating|rating}}</td>
+                                        <td>{{ commentaire.date|date('Y-m-d') }}</td>
+                                        <td>
+                                            <a class="btn btn-danger" href="{{ path('propriete_commentDelete_back',{id:commentaire.id})}}" onclick="return confirm('etes vous sur de vouloir supprimer cet avis ?')"><i class="fa fa-trash-o"></i></a>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div></div></div>
+{% endblock body %}

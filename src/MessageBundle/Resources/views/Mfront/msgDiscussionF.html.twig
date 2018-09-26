@@ -1,0 +1,166 @@
+{% extends "front.html.twig" %}
+{% block stylesheets %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset("css/owl.carousel.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/animate.custom.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/magnific-popup.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/style2.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/skins/default2.css") }}">
+    <link href=http://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700 rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backOffice/css/vendor.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backOffice/css/plugins.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('backOffice/css/pratham.min.css') }}">
+{% endblock %}
+
+    {% block body %}
+
+        <!-- CORE : begin -->
+        <div id="core" class="page-contact-us">
+
+        <!-- PAGE HEADER : begin -->
+        <div class="page-header has-nav">
+            <div class="container">
+                <div class="page-header-inner">
+                    <h1>Inbox</h1>
+                    <nav class="page-header-nav">
+                        <ul class="custom-list clearfix">
+                            <li ><a href="{{ path('my_app_user_client') }}">Home</a></li>
+                            <li class="active"><a href="{{ path('message_byUserFI') }}">My Inbox</a></li>
+                            <li ><a href="{{ path('chat_homepageF') }}">Chat rooms</a></li>
+                            <li><a href="{{ path('favoris_showF') }}">My Favourites</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- PAGE HEADER : end -->
+
+
+        <div class="container">
+        <body class="compose-modal">
+    <div class="prtm-wrapper">
+        <div class="prtm-main">
+            <div class="prtm-content-wrapper">
+                <div class="prtm-content">
+
+                    <div class="mail-style">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-4 col-sm-12 mail-inbox"><a
+                                        class="btn btn-danger btn-lg btn-block mrgn-b-md"
+                                        href="{{ path('message_newF') }}">Compose</a>
+                                <div class="prtm-full-block pad-tb-sm overflow-wrapper">
+                                    <div class="mrgn-b-md">
+                                        <ul class="email-tabs nav nav-tabs tabs-left">
+                                            <li class="active">
+                                                <a data-toggle="tab" href="#email-inbox" aria-expanded="true">
+                                                    <span class="mrgn-r-sm"><i class="fa fa-inbox"></i></span>
+                                                    Inbox<span class="badge badge-danger pull-right">{{ count }}</span>
+                                                </a>
+                                            </li>
+                                            <li><a data-toggle="tab" href="#starred-emails"
+                                                   aria-expanded="false"><span class="mrgn-r-sm"><i
+                                                                class="fa fa-rocket"></i></span> Spam</a></li>
+                                            <li><a data-toggle="tab" href="#emails-draft" aria-expanded="false"><span
+                                                            class="mrgn-r-sm"><i class="fa fa-trash"></i></span>
+                                                    Trash</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="email-labels pad-all-sm">
+                                        <h5 class="base-dark">Labels</h5>
+                                        <ul class="list-unstyled mrgn-all-none">
+                                            <li class="mrgn-b-xs"><a class="gray" href="javascript:;">
+                                                    Work
+                                                    <span class="label-info pull-right square-15"> </span>
+                                                </a></li>
+                                            <li class="mrgn-b-xs"><a class="gray" href="javascript:;">
+                                                    Private
+                                                    <span class="label-warning pull-right square-15"> </span>
+                                                </a></li>
+                                            <li class="mrgn-b-xs"><a class="gray" href="javascript:;">
+                                                    Client
+                                                    <span class="label-success pull-right square-15"> </span>
+                                                </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-10 col-md-8 col-sm-12 mail-content">
+
+                                <div class="prtm-full-block inner-acccordians">
+
+                                    <div class="container">
+
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <div id="panel-drop-2" class="collapse in">
+                                        <div class="pad-all-md">
+                                            {% for m in messages %}
+                                            {% if m.isRead ==0 %}
+                                            <div class="panel panel-primary">
+                                                {% else %}
+                                                <div class="panel panel-default">
+                                                    {% endif %}
+                                                    <div class="panel-heading pos-relative pad-all-md"
+                                                         id="heading-2">
+                                                        <h4 class="panel-title">
+                                                            <a class="accordion-toggle collapsed show"
+                                                               data-toggle="collapse"
+                                                               data-parent="#accordion"
+                                                               href="#collapse{{ m.id }}">
+                                                                <span>Subject : {{ m.subject}} </span>
+                                                                <span style="margin-left: 410px;"> {{ m.date|date("m/d")}} -
+
+                                                                    {{ m.time|date("h:m") }}</span>
+                                                            </a>
+
+
+
+                                                        </h4></div>
+                                                    <div id="collapse{{ m.id }}"
+                                                         class="panel-collapse collapse" role="tabpanel"
+                                                         aria-labelledby="heading-2">
+
+                                                        <div style="max-width: 800px;
+                                                                    overflow: hidden;
+                                                                text-overflow: ellipsis;
+                                                                white-space: nowrap;" class="panel-body">
+                                                            <a href="{{ path('message_showF', { 'id': m.id }) }}"
+                                                               class="gray">{{ m.contenu|raw }}</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        </body>
+        </div>
+        </div>
+
+
+
+
+    {% endblock %}

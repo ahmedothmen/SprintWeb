@@ -1,0 +1,33 @@
+{% extends "front.html.twig" %}
+{% block body %}
+    <div class="container">
+    <div class="form-top">
+    <div class="form-top-left">
+        <h3>Modification</h3>
+        <p>Formulaire de modification de votre avis sur la propriete   <i class="fa fa-pencil"></i></p>
+
+    </div>
+    <div class="form-bottom">
+{{ form_start(form) }}
+        <div class="form-group">
+
+            <div class="form-group">
+            {{ form_errors(form.contenu) }}
+            {{ form_label(form.contenu) }}
+            {{ form_widget(form.contenu)}}
+            </div></br></br>
+        </div>
+
+        <div class="form-group">
+            {{ form_errors(form.rating) }}
+            {{ form_label(form.rating) }}
+            {{ form_widget(form.rating) }}</br></br>
+        </div>
+    <button type="submit" class="button">Modifier</button></br></br>
+    {{ form_end(form) }}
+    </div>
+    </div>
+    </div>
+    <div class="col-md-3"></div>
+    </div>
+{% endblock %}

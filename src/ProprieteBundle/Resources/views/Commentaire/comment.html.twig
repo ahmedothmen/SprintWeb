@@ -1,0 +1,311 @@
+{% extends "front.html.twig" %}
+{% block body %}
+
+
+    <div id="core" class="page-property-details">
+
+        <!-- PAGE HEADER : begin -->
+
+        <div class="page-header">
+            <div class="container">
+                <div class="page-header-inner clearfix">
+                    <style>
+                        #red{color:red}
+                    </style>
+                    <h1 id="red" >Reserver vite !</h1>
+                    <ul class="custom-list breadcrumbs">
+                        <li><a href="index.html">Home</a> / </li>
+                        <li><a href="properties-listing-grid.html">Search Results</a> /</li>
+                        <li><a href="property-details-rent.html">Property Details</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- PAGE HEADER : end -->
+
+        <!-- MAIN WRAPPER : begin -->
+        <div class="main-wrapper-container">
+            <div class="container">
+                <div id="main-wrapper">
+                    <div class="row">
+                        <div class="col-md-8 col-md-push-4">
+                            <!-- PROPERTY DETAILS : begin -->
+                            <div class="property-details">
+
+
+
+                                <!-- PROPERTY IMAGES : begin -->
+                                <div class="property-images">
+                                    <div class="image-list">
+
+                                        <div class="image"><img src="{{ asset('dummies/Props.png') }}" ></div>
+
+                                    </div>
+                                    <div class="images-footer">
+                                        <div class="images-footer-inner">
+                                            <div class="image-description"></div>
+                                            <div class="image-counter"></div>
+                                        </div>
+                                        <button class="prev-btn"><i class="fa fa-chevron-left"></i></button>
+                                        <button class="next-btn"><i class="fa fa-chevron-right"></i></button>
+                                    </div>
+                                </div>
+                                <!-- PROPERTY IMAGES : end -->
+
+                                <div class="row">
+                                    <div class="col-md-8">
+
+                                        <!-- PROPERTY DESCRIPTION : begin -->
+
+
+
+                                        <div class="property-description">
+
+                                            <!-- DESCRIPTION TEXT : begin -->
+                                            <div class="description-text">
+                                                <h4>{{ propriete.titre }} </h4>
+                                                <p>Description :{{ propriete.description }}</p><br/>
+
+                                            </div>
+                                            <!-- DESCRIPTION TEXT : end -->
+
+                                            <!-- TABS : begin -->
+                                            <div class="tabs-container">
+                                                <ul class="tab-title-list">
+                                                    <li class="tab-title"><a href="#reviews">{{ nbrC }} Commentaire(s) </a></li>
+                                                </ul>
+                                                <ul class="tab-content-list">
+
+                                                    <!-- COMMENTS TAB : begin -->
+                                                    <li class="tab-content active">
+
+                                                        <div class="comments">
+                                                            <ul class="custom-list comment-list">
+                                                                {{ knp_pagination_render(pagination) }}
+
+                                                                <!-- COMMENT 1 : begin -->
+
+                                                                {% for commentaire in pagination %}
+                                                                {% if commentaire.idU==id %}
+
+                                                                <div style="margin-left:280px">  <a href="{{ path('propriete_commentEdit',{id:commentaire.id}) }}">modifier</a>
+                                                                    <a href="{{ path('propriete_commentDelete',{id:commentaire.id}) }}">supprimer </a></div>
+                                                                <div style="margin-top:-30px">
+                                                                    <li class="comment">
+                                                                        {%endif %}
+
+                                                                        <div class="author"><strong>{{ commentaire.idU}}</strong> - <span class="date">{{ commentaire.date|ago}}</span></div>
+                                                                        <div class="rating">{{ commentaire.rating|rating }}</div>
+
+                                                                        <div class="review">
+                                                                            <p>{{ commentaire.contenu }}</p>
+                                                                            <hr>
+                                                                            {% endfor %}
+
+                                                                        </div>
+                                                                    </li>
+                                                                </div>
+                                                            </ul>
+                                                        </div>
+
+                                                    </li>
+
+
+                                                    <!-- COMMENTS TAB : end -->
+
+                                                </ul>
+                                            </div>
+
+                                            <!-- TABS : end -->
+
+                                        </div>
+                                        <!-- PROPERTY DESCRIPTION : end -->
+
+                                    </div>
+                                    <div class="col-md-4">
+
+                                        <!-- PROPERTY PANEL : begin -->
+                                        <div class="property-panel">
+                                            <!-- OBJECT RATING : begin -->
+                                            <div class="panel-item object-rating">
+                                                <h4 class="panel-item-title">Object Rating</h4>
+                                                {{ rating|rating }}
+
+                                            </div>
+                                            <!-- OBJECT RATING : end -->
+
+                                            <!-- OBJECT PRICE : begin -->
+                                            <div class="panel-item object-price">
+
+
+
+                                                <h4 class="panel-item-title">Price</h4>
+                                                <p class="price">from <strong>{{ propriete.prix }} </strong>DTN/ night</p>
+                                                {% if favorisProp==null %}
+                                                    <form method="post" action="{{ path('propriete_addFavoris',{'id':propriete.idP}) }}">
+                                                        <button type="submit" class="button submit-btn"><i class="fa fa-envelope"></i> Ajouter favoris</button>
+                                                    </form>
+
+
+                                                {% elseif favorisProp.idU==id and favorisProp.idP==idP %}
+                                                    <form method="post" action="{{ path('propriete_deleteFavoris',{'id':favorisProp.id}) }}">
+
+                                                        <button type="submit" class="button submit-btn"><i class="fa fa-envelope"></i>Supprimer de la favoris</button>
+                                                    </form>
+
+                                                {% endif %}
+
+
+                                            </div>
+                                            <!-- OBJECT PRICE : end -->
+
+
+
+                                            <!-- OBJECT OWNER : begin -->
+                                            <div class="panel-item object-owner">
+                                                <h4 class="panel-item-title">Proprietaire</h4>
+                                                <div class="clearfix">
+                                                    {{ nom }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="{{ path("favoris_new",{'id':userP.id}  )}}"  type="submit" class="button submit-btn"><i class="fa fa-plus" aria-hidden="true"></i></a>
+                                                    <div class="portrait">
+                                                        {% set lien = 'http://localhost/SprintWeb21/SprintWeb2/web/img/propriete/' ~ userP.imgurl %}
+                                                        <img src="{{ lien }}" alt="">
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- OBJECT OWNER : end -->
+                                            <!-- BOOK FORM : begin -->
+
+                                            <div class="panel-item contact-form">
+
+                                                <h4 class="panel-item-title">Veuillez saisir votre commentaire</h4>
+                                                <form class="default-form" action="" method="POST">
+                                                    <p class="alert-message warning validation" style="display: none;"><i class="ico fa fa-exclamation-circle"></i> Please fill all fields!</p>
+                                                    {{ form_start(form) }}
+
+                                                    <p class="form-row">
+                                                        {{ form_label(form.contenu) }}
+                                                        {{ form_widget(form.contenu) }}
+                                                        {{ form_label(form.rating) }}
+                                                        {{ form_widget(form.rating) }}
+                                                    </p>
+                                                    <p class="form-row">
+                                                        <button type="submit" class="button submit-btn"><i class="fa fa-envelope"></i> Envoyez</button>
+                                                    </p>
+                                                </form>
+                                                {{ form_end(form) }}
+                                                <a href="{{ path("reclamation_new",{'id':propriete.idP}  )}}" class="button submit-btn"><i class="fa fa-envelope"></i>Reclamer</a>
+
+                                            </div>
+
+                                            <!-- BOOK FORM : end -->
+
+                                        </div>
+                                        <!-- PROPERTY PANEL : end -->
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- PROPERTY DETAILS : end -->
+
+                        </div>
+                        <div class="col-md-4 col-md-pull-8">
+
+                            <!-- PROPERTY LOCATION DETAILS : begin -->
+                            <aside class="property-location-details">
+                                <h3 class="property-location-title">Location &amp; Details</h3>
+
+                                <!-- PROPERTY MAP : begin -->
+                                <div class="property-map">
+                                    <iframe src="https://maps.google.com/maps?q=32.524526,-117.12392&amp;num=1&amp;ie=UTF8&amp;ll=32.514104,-117.110953&amp;spn=0.007843,0.013937&amp;t=m&amp;z=14&amp;output=embed"></iframe>
+                                    <a href="#" class="map-btn"><i class="fa fa-search-plus"></i></a>
+                                </div>
+                                <!-- PROPERTY MAP : end -->
+
+                                <!-- PROPERTY INFO : begin -->
+                                <div class="property-info">
+                                    <h4 class="property-info-title">Details</h4>
+
+                                    <!-- ADDRESS : begin -->
+                                    <div class="toggle-container property-address">
+                                        <h5 class="toggle-title">Address</h5>
+                                        <div class="toggle-content">
+                                            <p>{{ propriete.rue }}<br>
+                                                {{ propriete.ville }}<br>
+                                                {{ propriete.pays }}</p>
+
+                                        </div>
+                                    </div>
+                                    <!-- ADDRESS : end -->
+
+                                    <!-- ACCOMODATION : begin -->
+                                    <div class="toggle-container property-accomodation">
+                                        <h5 class="toggle-title">{{ propriete.titre }}</h5>
+                                        </h5>
+                                        <div class="toggle-content">
+
+                                            <ul class="custom-list">
+                                                <li>Nombre de voyageur <strong>{{ propriete.nbrVoyageur }}</strong></li>
+                                                <li>Nombre de chambre <strong>{{ propriete.nbrChambre }}</strong></li>
+                                                <li>Categorie de la propriete <strong>{{ propriete.categoriepropriete }}</strong></li>
+                                                <li>Type logement <strong>{{ propriete.typepropriete }}</strong></li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                    <!-- ACCOMODATION : end -->
+
+                                    <!-- ADDITIONAL : begin -->
+                                    <div class="toggle-container property-additional">
+                                        <h5 class="toggle-title">Additional Information</h5>
+                                        <div class="toggle-content">
+
+                                            <ul class="custom-list check-list">
+                                                {% if propriete.animaux==1 %}
+                                                    <li> Annimaux:Oui </li>
+                                                {% else %}
+                                                    <li> Non </li>
+                                                {% endif %}
+                                                {% if propriete.fumeur==1 %}
+                                                    <li> Fumeur:Oui </li>
+                                                {% else %}
+                                                    <li> Fumeur:Non </li>
+                                                {% endif %}
+                                                {% if propriete.alcool==1 %}
+                                                    <li> Alcool:Oui </li>
+                                                {% else %}
+                                                    <li> Alcool:Non </li>
+                                                {% endif %}
+                                                {% if propriete.enfant==1 %}
+                                                    <li> Enfant:Oui </li>
+                                                {% else %}
+                                                    <li> Enfant:Non </li>
+                                                {% endif %}
+
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                    <!-- ADDITIONAL : end -->
+
+                                </div>
+                                <!-- PROPERTY INFO : end -->
+
+                            </aside>
+                            <!-- PROPERTY LOCATION DETAILS : end -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- MAIN WRAPPER : end -->
+
+    </div>
+
+
+
+
+
+
+{% endblock %}

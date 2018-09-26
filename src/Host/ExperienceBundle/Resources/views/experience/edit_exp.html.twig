@@ -1,0 +1,137 @@
+{% extends "front.html.twig" %}
+{% block body %}
+
+    <!-- CORE : begin -->
+    <div id="core" class="page-contact-us">
+
+        <!-- PAGE HEADER : begin -->
+        <div class="page-header has-nav">
+            <div class="container">
+                <div class="page-header-inner">
+                    <h1>Contact Us</h1>
+                    <ul class="custom-list breadcrumbs">
+                        <li><a href="index.html">Home</a> / </li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                    <nav class="page-header-nav">
+                        <ul class="custom-list clearfix">
+                            <li class="active"><a href={{ path('show_exp') }}>My experiences</a></li>
+                            <li> <a href={{ path('exp_add') }}>Add new Experience</a></li>
+
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                            <li><a href="terms-conditions.html">Terms &amp; Conditions</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- PAGE HEADER : end -->
+
+        <!-- CONTENT SECTION : begin -->
+        <section class="content-section">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-sm-4">
+
+                        <h2>Casa HQ</h2>
+                        <h5>Postal Address</h5>
+                        <p>PO Box 16122 Collins Street West<br>
+                            Victoria 8007 Australia<br>
+                            Envato Headquarters</p>
+                        <p>121 King Street, Melbourne<br>
+                            Victoria 3000 Australia<br>
+                            Envato Pty Ltd</p>
+                        <p>ABN 11 119 159 741<br>
+                            Phone: +61 3 8376 6284</p>
+
+                    </div>
+                    <div class="col-sm-7">
+
+                        <div class="contact-form-container">
+
+                            <h5>Experience </h5>
+
+
+                            <!-- FORM VALIDATION ERROR MESSAGE : begin -->
+                            <p class="alert-message warning validation" style="display: none;"><i class="ico fa fa-exclamation-circle"></i><strong>All fields are required!</strong></p>
+                            <!-- FORM VALIDATION ERROR MESSAGE : end -->
+
+                            <!-- SENDING REQUEST ERROR MESSAGE : begin -->
+                            <p class="alert-message warning request" style="display: none;"><i class="ico fa fa-exclamation-circle"></i><strong>Form not sent!</strong><br>There was a connection problem. Try again later.</p>
+                            <!-- SENDING REQUEST ERROR MESSAGE : end -->
+                            {{ form_start(form,{'attr': {'class':'default-form'}} ) }}
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    {{ form_widget(form.nom_xp, {'id':'nom','attr': {'class': 'required','placeholder':'Name' }}) }}
+                                    <h5>arrival </h5>
+
+                                    {{ form_widget(form.arrival, {'id':'arrival','attr': {'class': 'form-control'}}) }}
+
+
+                                </div>
+                                <div class="col-sm-6">
+
+                                    {{ form_widget(form.type, {'id':'type','attr': {'class': ''}}) }}
+
+                                </div>
+                                <div class="col-sm-6">
+
+
+                                    <h5>departure </h5>
+
+                                    {{ form_widget(form.departure, {'id':'departure','attr': {'class': ''}}) }}
+
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h5>participants </h5>
+
+                                    {{ form_widget(form.participants, {'id':'participants','attr': {'class': ''}}) }}
+                                </div>
+                                <div class="col-sm-6">
+                                    <h5>Price </h5>
+
+                                    {{ form_widget(form.prix_xp, {'id':'prix_xp','attr': {'class': ''}}) }}
+
+                                </div>
+                            </div>,
+                            <h5>Description </h5>
+
+                            {{ form_widget(form.description, {'id':'description','attr': {'class': '','placeholder':'describe your experience...'}}) }}
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <p class="form-note">All fields are required</p>
+                                </div>
+                                <div class="col-sm-6">
+
+                                    {{ form_widget(form.Submit, {'attr': {'class': 'button submit-btn'}}) }}
+
+                                    {{ form_end(form)}}
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- CONTENT SECTION : end -->
+
+    </div>
+    <!-- CORE : end -->
+
+
+
+
+
+{% endblock %}

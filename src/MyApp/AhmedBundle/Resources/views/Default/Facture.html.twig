@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <title>LOGO</title>
+    <style type="text/css">
+        html,body{height:100%;margin:0;padding:0;text-align:center}
+        #global{margin:0 auto;min-height:80%;text-align:left;width:960px}
+        * html #global{height:100%}
+
+
+        #fact {
+            width: 800px;
+            margin:auto;
+        }
+        #fact td {
+            border: 1px outset #999999;
+            padding:0 5px;
+        }
+        #fact .caps {
+            font-variant: small-caps;
+        }
+        #fact .right {
+            text-align: right;
+        }
+        .center {
+            text-align: center;
+        }
+        #fact .bg {
+            background-color: #dadfd8;
+        }
+        #fact .bordernone {
+            border: none!important;
+        }
+    </style>
+</head>
+
+<body style="align:center">
+<br/>
+<br/>
+<div id="global" style="border-width:1px; border-style:solid; border-color:black; padding:6px;width:800px">
+   <br/>
+    <br/>
+    {% for pt in proprietes %}
+
+    <table id="fact" border="0">
+        <tr>
+            <td class="caps center" style="height: 100px;">BeMyGest<br /></td>
+            <td class="caps center" colspan="4">FACTURE</td>
+        </tr>
+        <tr>
+            <td class="caps bg" style="width:210px"></td>
+            <td class="caps center bg" style="width:110px" rowspan="2">Date</td>
+            <td class="caps center bg" style="width:50px" rowspan="2"># de Facture</td>
+            <td class="caps center bg" style="width:105px" rowspan="2">Code Client</td>
+            <td class="caps center bg" rowspan="2">Client</td>
+        </tr>
+        <tr>
+            <td class="caps bg"></td>
+        </tr>
+        <tr>
+            <td class="center"><br/> </td>
+            <td class="center">{{ 'now'|date('d - m -Y') }}</td>
+            <td class="center">{{ pt.id_r }}</td>
+            <td class="center"> {{ pt.idU }}</td>
+            <td class="center"> {{ pt.nom }}<br/>{{ pt.prenom }}</td>
+        </tr>
+    </table><br />
+
+    <table id="fact" style="height: 350px;" border="0">
+        <tr>
+            <td class="caps center bg" style="width:50px">Code</td>
+            <td class="caps center bg">Chambre</td>
+            <td class="caps center bg" style="width:110px">Nbres Jours</td>
+            <td class="caps center bg" style="width:110px">PU / $ HT</td>
+            <td class="caps center bg" style="width:110px">Montant / $ HT</td>
+        </tr>
+        <tr>
+            <td class="center">0001</td>
+            <td class="center">{{ pt.tit }}</td>
+            <td class="center">{{ pt.diff }}</td>
+            <td class="center"> {{ pt.prix }}</td>
+            <td class="center"><br/>{{ pt.prix * pt.diff }}</td>
+        </tr>
+
+        {% endfor %}
+
+
+        <tr>
+            <td colspan="2" rowspan="2"><em>Les conditions de vente sont déterminées dans le contrat général de vente de l'entreprise. </em></td>
+
+        </tr>
+        <tr>
+            <td class="caps right bg" colspan="3">Vous êtes le patron © 2017</td>
+
+
+        </tr>
+    </table>
+</div>
+</body>
+</html>

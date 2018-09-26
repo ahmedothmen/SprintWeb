@@ -1,0 +1,16 @@
+services:
+    fos_user.doctrine_registry:
+        alias: doctrine
+    redirect.after.login:
+        class: MyApp\UserBundle\Redirection\AfterLoginRedirection
+        arguments: ["@router"]
+    belousov.mapping.listener:
+        class: belousovr\belousovChatBundle\EventListener\DynamicRelationSubscriber
+        tags:
+            - { name: doctrine.event_listener, event: loadClassMetadata }
+        arguments:
+            - %belousov.chat.user_class%
+
+parameters:
+    belousov.chat.user_class: MyApp\UserBundle\Entity\User
+

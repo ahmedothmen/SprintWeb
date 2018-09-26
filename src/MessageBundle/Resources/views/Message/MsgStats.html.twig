@@ -1,0 +1,142 @@
+{% extends "back.html.twig" %}
+
+{% block body %}
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/pie.js"></script>
+    <body class="">
+    <div class="prtm-wrapper">
+        <div class="prtm-main">
+            <div class="prtm-content-wrapper">
+                <div class="prtm-content">
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 full-col-lg-md">
+                            <div class="prtm-block pos-relative pad-b-none">
+                                <div class="prtm-block-content">
+                                    Total Messages : {{ countAllMsg }}
+                                    <!-- amCharts javascript code -->
+                                    <script type="text/javascript">
+                                        AmCharts.makeChart("chartdiv1",
+                                            {
+                                                "type": "pie",
+                                                "angle": 12,
+                                                "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+                                                "depth3D": 15,
+                                                "innerRadius": "40%",
+                                                "titleField": "category",
+                                                "valueField": "column-1",
+                                                "allLabels": [],
+                                                "balloon": {},
+                                                "legend": {
+                                                    "enabled": true,
+                                                    "align": "center",
+                                                    "markerType": "circle"
+                                                },
+                                                "titles": [],
+                                                "dataProvider": [
+                                                    {
+                                                        "category": "New Disucussions",
+                                                        "column-1": {{  countNewMsg }}
+                                                    },
+                                                    {
+                                                        "category": "Same Thread",
+                                                        "column-1": {{ countSameThreadMsg }}
+                                                    },
+
+                                                ]
+                                            }
+                                        );
+                                    </script>
+                                    <div id="chartdiv1"
+                                         style="width: 100%; height: 400px; background-color: #FFFFFF;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 full-col-lg-md">
+                            <div class="prtm-block pos-relative pad-b-none">
+                                <div class="prtm-block-title mrgn-b-md">
+                                    <div class="caption">
+                                        <h3 class="mrgn-all-none">Email Stats</h3>By File & Label</div>
+                                </div>
+                                <div class="prtm-block-content">
+                                    <div class="prtm-counter-email-list row text-center">
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 pad-all-none">
+                                            <div class="counter-email mrgn-b-md">
+                                                <div class="prtm-pie-chart mrgn-b-md" data-chart="easypie"
+                                                     data-animate="2000" data-size="130" data-linewidth="3"
+                                                     data-barcolor="#fd7b6c" data-trackcolor="#dddddd"
+                                                     data-scale="#d5d5d5" data-percent="{{  countMsgInbox }}"><span
+                                                            class="percent fa-lg count-item" data-count="{{  countMsgInbox }}">{{  countMsgInbox }}</span>
+                                                </div>
+                                                <p><i class="fa fa-inbox mrgn-r-xs"></i>Inbox</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 pad-all-none">
+                                            <div class="counter-email mrgn-b-md">
+                                                <div class="prtm-pie-chart mrgn-b-md" data-chart="easypie"
+                                                     data-animate="2000" data-size="130" data-linewidth="3"
+                                                     data-barcolor="#00ca95" data-trackcolor="#dddddd"
+                                                     data-scale="#d5d5d5" data-percent="{{  countMsgSpam }}"><span
+                                                            class="percent fa-lg count-item" data-count="{{  countMsgSpam }}">{{  countMsgSpam }}</span>
+                                                </div>
+                                                <p><i class="fa fa-rocket mrgn-r-xs"></i>Spam</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 pad-all-none">
+                                            <div class="counter-email mrgn-b-md">
+                                                <div class="prtm-pie-chart mrgn-b-md" data-chart="easypie"
+                                                     data-animate="2000" data-size="130" data-linewidth="3"
+                                                     data-barcolor="#415094" data-trackcolor="#dddddd"
+                                                     data-scale="#d5d5d5" data-percent="{{  countMsgTrash }}"><span
+                                                            class="percent fa-lg count-item" data-count="{{  countMsgTrash }}">{{  countMsgTrash }}</span>
+                                                </div>
+                                                <p><i class="fa fa-trash mrgn-r-xs"></i>Trash</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 pad-all-none">
+                                            <div class="counter-email mrgn-b-md">
+                                                <div class="prtm-pie-chart mrgn-b-md" data-chart="easypie"
+                                                     data-animate="2000" data-size="130" data-linewidth="3"
+                                                     data-barcolor="#00ca95" data-trackcolor="#dddddd"
+                                                     data-scale="#d5d5d5" data-percent="{{ countMsgWork }}"><span
+                                                            class="percent fa-lg count-item" data-count="{{ countMsgWork }}">{{ countMsgWork }}</span>
+                                                </div>
+                                                <p><span class="label label-info btn-rounded">Work</span></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 pad-all-none">
+                                            <div class="counter-email mrgn-b-md">
+                                                <div class="prtm-pie-chart mrgn-b-md" data-chart="easypie"
+                                                     data-animate="2000" data-size="130" data-linewidth="3"
+                                                     data-barcolor="#00ca95" data-trackcolor="#dddddd"
+                                                     data-scale="#d5d5d5" data-percent="{{ countMsgPrivate }}"><span
+                                                            class="percent fa-lg count-item" data-count="{{ countMsgPrivate }}">{{ countMsgPrivate }}</span>
+                                                </div>
+                                                <p><span class="label label-warning btn-rounded">Private</span></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 pad-all-none">
+                                            <div class="counter-email mrgn-b-md">
+                                                <div class="prtm-pie-chart mrgn-b-md" data-chart="easypie"
+                                                     data-animate="2000" data-size="130" data-linewidth="3"
+                                                     data-barcolor="#00ca95" data-trackcolor="#dddddd"
+                                                     data-scale="#d5d5d5" data-percent="{{ countMsgClient }}"><span
+                                                            class="percent fa-lg count-item" data-count="{{ countMsgClient }}">{{ countMsgClient }}</span>
+                                                </div>
+                                                <p><span class="label label-success btn-rounded">Client</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{% endblock %}

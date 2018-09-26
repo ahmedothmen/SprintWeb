@@ -1,0 +1,209 @@
+{% extends "back.html.twig"  %}
+
+
+    {% block body %}
+
+        <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+        <script>$(document).ready(function () {
+                $('.moveTo').click(function () {
+                    var clickBtnValue = $(this).prop('name');
+                    var idm = {{ message.id }};
+                    var ajaxurl = 'trashed',
+                        data = {'action': clickBtnValue, 'id': idm};
+                    $.get(ajaxurl, data, function (response) {
+                        console.log(response)
+                        // Response div goes here.
+                        alert("action performed successfully");
+                    });
+                });
+            });</script>
+
+            <body class="compose-modal">
+            <div class="prtm-wrapper">
+                <div class="prtm-main">
+                    <div class="prtm-content-wrapper">
+                        <div class="prtm-content">
+                            <div class="prtm-page-bar">
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item text-uppercase">
+                                        <h3>Mail Service</h3></li>
+                                    <li class="breadcrumb-item"><a href="{{ path('my_app_user_homepageB') }}">Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item"><a href="{{ path('message_byUser') }}">Mail Service</a>
+                                    </li>
+                                    <li class="breadcrumb-item"><a
+                                                href="{{ path('message_show', { 'id': message.id }) }}" class="active">Email
+                                            Detail</a></li>
+                                </ul>
+                            </div>
+                            <div class="mail-style">
+                                <div class="row">
+                                    <div class="col-lg-2 col-md-4 col-sm-12 mail-inbox"><a
+                                                class="btn btn-danger btn-lg btn-block mrgn-b-md"
+                                                href="{{ path('message_new') }}">Compose</a>
+                                        <div class="prtm-full-block pad-tb-sm">
+                                            <div class="mrgn-b-md">
+                                                <ul class="email-tabs nav nav-tabs tabs-left">
+                                                    <li class="active"><a data-toggle="tab" href="#email-inbox"
+                                                                          aria-expanded="true"><span
+                                                                    class="mrgn-r-sm"><i class="fa fa-inbox"></i></span>Inbox
+                                                            <span class="badge badge-danger pull-right">{{ count }}</span></a>
+                                                    </li>
+                                                    <li><a data-toggle="tab" href="#starred-emails"
+                                                           aria-expanded="false"><span class="mrgn-r-sm"><i
+                                                                        class="fa fa-rocket"></i></span> Spam</a></li>
+                                                    <li><a data-toggle="tab" href="#emails-draft" aria-expanded="false"><span
+                                                                    class="mrgn-r-sm"><i class="fa fa-trash"></i></span>
+                                                            Trash</a></li>
+                                                </ul>
+                                            </div>
+                                            <div class="email-labels pad-all-sm">
+                                                <h5 class="base-dark">Labels</h5>
+                                                <ul class="list-unstyled mrgn-all-none">
+                                                    <li class="mrgn-b-xs"><a class="gray" href="javascript:;">
+                                                            Work
+                                                            <span class="label-info pull-right square-15"> </span>
+                                                        </a></li>
+                                                    <li class="mrgn-b-xs"><a class="gray" href="javascript:;">
+                                                            Private
+                                                            <span class="label-warning pull-right square-15"> </span>
+                                                        </a></li>
+                                                    <li class="mrgn-b-xs"><a class="gray" href="javascript:;">
+                                                            Client
+                                                            <span class="label-success pull-right square-15"> </span>
+                                                        </a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-10 col-md-8 col-sm-12 mail-content">
+                                        <div class="prtm-block clearfix">
+                                            <div class="prtm-block-title mrgn-b-lg">
+                                                <div class="email-tools hover-drop">
+                                                    <ul class="list-inline mail-toolbar" data-hover="dropdown">
+                                                        <li>
+                                                            <a href="#"> <span><i class="fa fa-inbox"
+                                                                                  aria-hidden="true"></i></span> <span>Inbox</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="{{ path('message_reply', { 'id': message.idMessageBase }) }}">
+                                                                <span><i class="fa fa-mail-reply"
+                                                                         aria-hidden="true"></i></span>
+                                                                <span>Reply</span></a>
+                                                        </li>
+                                                        <li class="dropdown">
+                                                            <a href="javascript:;"> <span><i class="fa fa-folder-open"
+                                                                                             aria-hidden="true"></i></span>
+                                                                <span>Move</span> <span><i class="fa fa-caret-down"
+                                                                                           aria-hidden="true"></i></span>
+                                                            </a>
+                                                            <ul class="dropdown-menu">
+                                                                <li><a type="submit" name="Inbox"
+                                                                       href="{{ path('message_byUser') }}"
+                                                                       class="moveTo clearfix"><span
+                                                                                class="pull-left">Inbox</span> <span
+                                                                                class="pull-right"><i
+                                                                                    class="fa fa-inbox"
+                                                                                    aria-hidden="true"></i></span></a>
+                                                                </li>
+                                                                <li><a type="submit" name="Spam"
+                                                                       href="{{ path('message_byUser') }}"
+                                                                       class="moveTo clearfix"><span
+                                                                                class="pull-left">Spam</span> <span
+                                                                                class="pull-right"><i
+                                                                                    class="fa fa-rocket"
+                                                                                    aria-hidden="true"></i></span></a>
+                                                                </li>
+                                                                <li><a type="submit" name="Trash"
+                                                                       href="{{ path('message_byUser') }}"
+                                                                       class="moveTo clearfix"><span
+                                                                                class="pull-left">Trash</span> <span
+                                                                                class="pull-right"><i
+                                                                                    class="fa fa-trash"
+                                                                                    aria-hidden="true"></i></span></a>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li><a type="submit" id="imprimer" href="javascript:;"><span><i
+                                                                            class="fa fa-print"
+                                                                            aria-hidden="true"></i></span>
+                                                                <span>Print</span></a></li>
+                                                        <script>
+                                                            var bouton = document.getElementById('imprimer');
+                                                            bouton.onclick = function (e) {
+                                                                e.preventDefault();
+                                                                window.print();
+                                                            }
+                                                        </script>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="prtm-block-contant">
+                                                <div class="row clearfix">
+                                                    <div class="col-lg-12">
+                                                        <div class="row mrgn-b-lg">
+                                                            <div class="col-lg-custom-3">
+                                                                {% set lien = 'http://localhost/SprintWeb21/SprintWeb2/web/img/propriete/' ~ user.imgurl %}
+                                                                <div class="feature-box-thumb square-100 pull-left"><img
+                                                                            name="{{ user.id }}"
+                                                                            src="{{ lien }}"
+                                                                            class="img-responsive img-circle"
+                                                                            alt="sender mail" width="100" height="100"/>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-10 pad-tb-md">
+                                                                <div class="feature-box-content pull-left">
+                                                                    <p class="font-lg base-dark fw-medium">{{ message.np }}</p>
+                                                                    <span>Sent in : {{ message.date|date("m/d") }}
+                                                                        - {{ message.time|date("h:m") }}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="clearfix"></div>
+                                                        </div>
+                                                        <div class="mrgn-b-lg">
+                                                            <p class="font-lg">Title : {{ message.subject }} </p>
+                                                        </div>
+                                                        <div class="email-content-body">
+                                                            <div class="mrgn-b-lg">
+                                                                <div class="btn-group"><a
+                                                                            class="btn btn-outline-base dropdown-toggle btn-small btn-rounded"
+                                                                            data-toggle="dropdown" href="javascript:;"
+                                                                            aria-expanded="false">
+                                                                        {{ message.np }}&nbsp;&nbsp;
+                                                                        <span class="caret"></span>
+                                                                    </a>
+                                                                    <ul class="dropdown-menu">
+                                                                        <li><a href="javascript:;">Profile</a></li>
+                                                                        <li><a href="javascript:;">Add to Friends</a>
+                                                                        </li>
+                                                                        <li><a href="javascript:;">Report</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                            <div class="mrgn-b-lg">
+                                                                <p>{{ message.contenu|raw }}.</p>
+                                                                <p>Consectetur adipiscing elit. Morbi sodales, velit at
+                                                                    laoreet hendrerit, tellus dui aliquet est, ac cursus
+                                                                    velit erat et est. Quisque vitae tortor nibh.
+                                                                    Aliquam ornare, augue ac pulvinar euismod, mi felis
+                                                                    cursus nisl, non ultrices lacus turpis sit amet
+                                                                    lacus.
+                                                                    Morbi at fringilla lectus, non consectetur ante.
+                                                                    Duis eleifend quis eros eu vulputate.</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </body>
+        
+    {% endblock %}

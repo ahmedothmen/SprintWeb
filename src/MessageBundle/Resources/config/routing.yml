@@ -1,0 +1,119 @@
+message_homepage:
+    path:     /
+    defaults: { _controller: MessageBundle:Default:index }
+
+message_showAll:
+    path:     /showAll
+    defaults: { _controller: "MessageBundle:Message:showAll" }
+    methods:  GET
+
+message_show:
+    path:     /{id}/show
+    defaults: { _controller: "MessageBundle:Message:show" }
+    methods:  GET
+
+message_new:
+    path:     /new
+    defaults: { _controller: "MessageBundle:Message:new" }
+    methods:  [GET, POST]
+
+message_new2:
+    path:     /newM/{id}
+    defaults: { _controller: "MessageBundle:Message:new2" }
+    methods:  [GET, POST]
+
+message_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "MessageBundle:Message:edit" }
+    methods:  [GET, POST]
+
+message_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "MessageBundle:Message:delete" }
+    methods:  DELETE
+
+message_byUser:
+    path:     /UrMsg
+    defaults: { _controller: "MessageBundle:Message:getMsg" }
+    methods:  GET
+
+message_discussion:
+    path:     /{id}/msgDisc
+    defaults: { _controller: "MessageBundle:Message:msgDiscussion" }
+
+message_reply:
+    path:     /{id}/msgReply
+    defaults: { _controller: "MessageBundle:Message:Reply" }
+
+message_test:
+    path:     /{id}/msgTest
+    defaults: { _controller: "MessageBundle:Message:pageDeTest" }
+
+message_stats:
+    path:     /msgStats
+    defaults: { _controller: "MessageBundle:Message:calculMsgStats" }
+    methods:  GET
+
+trashed:
+    path: /{id}/trashed
+    defaults: { _controller: "MessageBundle:Message:moveTo" }
+
+favoris_show:
+    path:     /favoris
+    defaults: { _controller: "MessageBundle:Favoris:show" }
+
+favoris_remove:
+    path:     /favorisRemove
+    defaults: { _controller: "MessageBundle:Favoris:delete" }
+
+
+
+message_newF:
+    path:     /newF
+    defaults: { _controller: "MessageBundle:MessageF:newF" }
+    methods:  [GET, POST]
+
+message_byUserFI:
+    path:     /UrMsgFI
+    defaults: { _controller: "MessageBundle:MessageF:getMsg" }
+    methods:  GET
+
+message_byUserFS:
+    path:     /UrMsgFS
+    defaults: { _controller: "MessageBundle:MessageF:getMsgFS" }
+    methods:  GET
+
+message_byUserFT:
+    path:     /UrMsgFT
+    defaults: { _controller: "MessageBundle:MessageF:getMsgFT" }
+    methods:  GET
+
+message_showF:
+    path:     /{id}/showF
+    defaults: { _controller: "MessageBundle:MessageF:showF" }
+    methods:  GET
+
+message_discussionF:
+    path:     /{id}/msgDiscF
+    defaults: { _controller: "MessageBundle:MessageF:msgDiscussionF" }
+
+message_showF:
+    path:     /{id}/showF
+    defaults: { _controller: "MessageBundle:MessageF:showF" }
+    methods:  GET
+
+message_replyF:
+    path:     /{id}/msgFReply
+    defaults: { _controller: "MessageBundle:MessageF:ReplyF" }
+
+favoris_showF:
+    path:     /favorisF
+    defaults: { _controller: "MessageBundle:Favoris:showF" }
+
+favoris_removeF:
+    path:     /favorisRemoveF
+    defaults: { _controller: "MessageBundle:Favoris:deleteF" }
+
+favoris_new:
+    path:     /new/{id}
+    defaults: { _controller: "MessageBundle:Favoris:addF" }

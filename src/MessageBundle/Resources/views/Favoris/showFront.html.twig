@@ -1,0 +1,144 @@
+{% extends "front.html.twig" %}
+{% set role1 = 'Admin' %}
+{% set role2 = 'Client' %}
+
+{% block body %}
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset("css/owl.carousel.css") }}">
+        <link rel="stylesheet" href="{{ asset("css/animate.custom.css") }}">
+        <link rel="stylesheet" href="{{ asset("css/magnific-popup.css") }}">
+        <link rel="stylesheet" href="{{ asset("css/style2.css") }}">
+        <link rel="stylesheet" href="{{ asset("css/skins/default2.css") }}">
+        <link href=http://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700 rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ asset('backOffice/css/vendor.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('backOffice/css/plugins.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('backOffice/css/pratham.min.css') }}">
+    {% endblock %}
+
+    <!-- CORE : begin -->
+    <div id="core" class="page-contact-us">
+
+    <!-- PAGE HEADER : begin -->
+    <div class="page-header has-nav">
+        <div class="container">
+            <div class="page-header-inner">
+                <h1>My Favourites</h1>
+                <nav class="page-header-nav">
+                    <ul class="custom-list clearfix">
+                        <li ><a href="{{ path('my_app_user_client') }}">Home</a></li>
+                        <li ><a href="{{ path('message_byUserFI') }}">My Inbox</a></li>
+                        <li><a href="{{ path('chat_homepageF') }}">Chat rooms</a></li>
+                        <li class="active" ><a href="{{ path('favoris_showF') }}">My Favourites</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- PAGE HEADER : end -->
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+
+    <div class="container">
+    <body class="compose-modal">
+<div class="prtm-wrapper">
+    <div class="prtm-main">
+        <div class="prtm-content-wrapper">
+            <div class="prtm-content">
+                <div class="ecommerce-page-style">
+                    <div class="prtm-block pos-relative">
+                        <div class="prtm-block-title mrgn-b-lg">
+                            <div class="caption">
+                                <h3 class="text-capitalize base-dark">Favorite List</h3></div>
+                        </div>
+                        <div class="prtm-block-content">
+                            <div class="prtm-users-listing clearfix">
+                                <div class="row">
+                                    {% for u in users  %}
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-5">
+                                            <div class="prtm-block fw-light">
+                                                <div class="overlay-wrap text-center mrgn-b-md">
+                                                    {% set lien = 'http://localhost/SprintWeb21/SprintWeb2/web/img/propriete/' ~ u.imgurl %}
+                                                    <div class="thumb-wid pull-left mrgn-r-md"><img name="{{ u.id }}" src="{{ lien }}"
+                                                                                                    alt="user list image" class="img-responsive img-circle"
+                                                                                                    width="107" height="107"></div>
+                                                    <div class="hover-overlay pos-center primary-tp-layer">
+                                                        <div class="center-holder">
+                                                            <a type="submit" id="remove{{ u.id }}" name="remove" class="btn btn-base btn-block">Remove</a>
+                                                            <script>$(document).ready(function () {
+                                                                    $('#remove{{ u.id }}').click(function () {
+                                                                        var idf = {{ u.id }};
+                                                                        $.ajax({
+                                                                            url: "favorisRemoveF",
+                                                                            type: "GET",
+                                                                            data: { "idf" : idf },
+                                                                            success: function () {
+                                                                                location.reload();
+                                                                            }
+                                                                        });
+                                                                    });
+                                                                });</script>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="wrapper-content">
+                                                    <div class="row">
+                                                        <div class="col-xs-7 col-sm-7 col-md-7">  <h5 class="text-capitalize">{{ u.nom }} {{ u.prenom }}
+                                                                {% if u.roles[0]=='ROLE_SUPER_ADMIN' %}
+                                                                    <span class="label label-xs label-primary">{{ role1 }}</span></h6>
+
+                                                                {% else %}
+                                                                    <span class="label label-xs label-success">{{ role2 }}</span></h6>
+                                                                {% endif %}
+                                                            </h5>  <span class="mrgn-b-xs show">Last Login: {{ u.lastLogin|date("d/m h:m") }}</span>
+                                                            {% for f in favoris %}
+                                                                {% if f.idFavoris == u.id %}
+                                                                    <span class="mrgn-b-xs show">Alias: {{ f.alias }}</span>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                                <div class="row">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+    </body>
+    </div>
+    </div>
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% set  nbr= 0 %}
+
+
+
+
+    <div class="header-form">
+    {% for pt in proprietes %}
+    {% if  pt.diff>=2  %}
+        {% if  pt.etat=='true'  %}
+            {% set  nbr= nbr+1 %}
+            <hr>
+            <div style="width:180px;background-color: #D40041;-webkit-text-fill-color:white;text-align: center" > reservation accepter </div>
+
+           {{ pt.ll }}
+            <hr>
+            <div style="width:180px;background-color: #D40041;-webkit-text-fill-color:white;text-align: center" > -{{ pt.diff }} jours </div>
+            <hr>
+            <a href="{{ path('my_app_ahmed_AffichageFacture', {'id': pt.ll}) }}" class="member-portrait"> Voir Facture</a>
+
+        {% elseif pt.etat=='false' %}
+            {% set  nbr= nbr+1 %}
+            <div style="width:180px;background-color: #D40041;-webkit-text-fill-color:white;text-align: center" >reservation refuser</div>
+        {% endif %}
+        <hr>
+
+    {% endif %}
+
+    {% endfor %}
+
+
+</div>
+{% if  nbr>0  %}
+<div style="position:absolute;color:white; background-color:red">  {{ nbr }} </div>
+{% endif%}
+<img src="{{ asset('img/ring1.png') }}">

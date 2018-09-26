@@ -1,0 +1,167 @@
+{% extends 'front.html.twig' %}
+
+{% block body %}
+
+
+
+
+    <!-- CORE : begin -->
+    <div id="core" class="page-contact-us">
+
+
+
+        <!-- CONTENT SECTION : begin -->
+        <section class="content-section">
+            <div class="container">
+
+
+                <div class="col-sm-7">
+
+                    <div class="contact-form-container">
+
+                        <h3>Ajouter votre evaluation </h3>
+                        <form method="post" class="default-form">
+
+                            <!-- FORM VALIDATION ERROR MESSAGE : begin -->
+                            <p class="alert-message warning validation" style="display: none;"><i class="ico fa fa-exclamation-circle"></i><strong>All fields are required!</strong></p>
+                            <!-- FORM VALIDATION ERROR MESSAGE : end -->
+
+                            <!-- SENDING REQUEST ERROR MESSAGE : begin -->
+                            <p class="alert-message warning request" style="display: none;"><i class="ico fa fa-exclamation-circle"></i><strong>Form not sent!</strong><br>There was a connection problem. Try again later.</p>
+                            <!-- SENDING REQUEST ERROR MESSAGE : end -->
+
+                            <div class="row">
+
+
+                            </div>
+                            <div class="row">
+
+                                <div class="col-sm-6">
+                                    <p>
+												<span class="select-box">
+													<select id="field_subject" name="field_subject" class="required" data-placeholder="Type acceuil">
+														<option>Subject</option>
+														<option value="bon">bon</option>
+														<option value="tres bon">tres bon</option>
+                                                        <option value="mauvais">mauvais</option>
+													</select>
+                                    <p>
+                                    <p>
+												<span class="select-box">
+													<select id="field_subject1" name="field_subject1" class="required" data-placeholder="etat du chambre">
+														<option>Subject</option>
+														<option value="bon">bon</option>
+														<option value="tres bon">tres bon</option>
+                                                        <option value="mauvais">mauvais</option>
+													</select>
+                                    <p>
+                                    <p>
+												<span class="select-box">
+													<select id="field_subject2" name="field_subject2" class="required" data-placeholder="caractere du gost">
+														<option>Subject</option>
+													<option value="bon">bon</option>
+														<option value="tres bon">tres bon</option>
+                                                        <option value="mauvais">mauvais</option>
+													</select>
+                                    <p>   <p>
+												<span class="select-box">
+													<select id="field_subject5" name="field_subject5" class="required" data-placeholder="experience globale">
+														<option>Subject</option>
+														<option value="interessante">interessante</option>
+														<option value="normale">normale</option>
+                                                        <option value="mauvaise">mauvaise</option>
+													</select>
+                                    <p>   <p>
+												<span class="select-box">
+													<select id="field_subject4" name="field_subject4" class="required" data-placeholder="qualite prix">
+														<option>Subject</option>
+														<option value="tres chere">tres chere</option>
+														<option value="prix raisonnable">prix raisonnable</option>
+
+													</select>
+                                    <p>   <p>
+												<span class="select-box">
+													<select id="field_subject3" name="field_subject3" class="required" data-placeholder="reglement">
+														<option>Subject</option>
+														<option value="tres stricte">tres stricte</option>
+														<option value="normale">normale</option>
+
+													</select>
+
+                                    <script>
+                                        document.ready()
+                                        {
+                                        $(document).on("change", "#field_subject", function() {
+                                            var y = $(this).find("option:selected").text();
+                                            $("#field_subject").val(y);
+                                        });
+                                        }
+                                    </script>
+                                          <script>
+                                              $(document).on("change", "#field_subject1", function() {
+                                                  var y = $(this).find("option:selected").text();
+                                                  $("#field_subject1").val(y);
+                                              });
+                                    </script>
+
+                                                   <script>
+                                                       $(document).on("change", "#field_subject2", function() {
+                                                           var y = $(this).find("option:selected").text();
+                                                           $("#field_subject2").val(y);
+                                                       });
+                                    </script>
+
+                                                      <script>
+                                                          $(document).on("change", "#field_subject3", function() {
+                                                              var y = $(this).find("option:selected").text();
+                                                              $("#field_subject3").val(y);
+                                                          });
+                                    </script>
+
+                                                      <script>
+                                                          $(document).on("change", "#field_subject4", function() {
+                                                              var y = $(this).find("option:selected").text();
+                                                              $("#field_subject4").val(y);
+                                                          });
+
+                                    </script>
+
+                                                      <script>
+                                                          $(document).on("change", "#field_subject5", function() {
+                                                              var y = $(this).find("option:selected").text();
+                                                              $("#field_subject5").val(y);
+                                                          });
+                                    </script>
+                                    </span>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-sm-6">
+                                    <button type="submit" class="button submit-btn" data-loading-label="Sending..."><i class="fa fa-envelope"></i>evaluer</button>
+                                </div>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </div>
+    </section>
+    <!-- CONTENT SECTION : end -->
+
+    </div>
+    <!-- CORE : end -->
+
+
+
+
+
+{% endblock %}
+
+

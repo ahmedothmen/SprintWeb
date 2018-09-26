@@ -1,0 +1,79 @@
+{% extends "front.html.twig" %}
+
+{% block body %}
+    </br>
+
+    {{ render(controller('MyAppAhmedBundle:Default:menu')) }}
+    <section id="browse">
+
+        <div class="container">
+        <div class="tabs-container browse-tabs-container">
+        <div class="browse-inner">
+            <div class="tabs-container browse-tabs-container">
+
+                <ul class="custom-list tab-title-list">
+                    <li class="tab-title active"><a href="#featured-properties">List Des Demandes</a></li>
+
+                </ul>
+
+                <ul class="custom-list tab-content-list browse-contents">
+                    <li class="tab-content active">
+
+                        <div class="row">
+
+                            <table border="1">
+
+                                <thead>
+                                <tr>
+
+                                    <th>ville</th>
+                                    <th>prix</th>
+
+                                    <th>titre</th>
+                                    <th>arrivee</th>
+                                    <th>depart</th>
+                                   <th>nom</th>
+                                   <th>prenom</th>
+                                    <th>accepter</th>
+                                    <th>refuser</th>
+                                </tr>
+                                </thead>
+
+
+                                <tbody>
+                                {% for pt in proprietes %}
+                                    <tr>
+                                        <td>{{ pt.vil }}</td>
+                                        <td>{{ pt.prix  }}</td>
+
+                                        <td>{{ pt.tit }}</td>
+                                        <td>{{ pt.dtD |date('Y-m-d') }}</td>
+                                        <td>{{ pt.dtF |date('Y-m-d') }}</td>
+                                        <td>{{ pt.nom }}</td>
+                                        <td>{{ pt.prenom }}</td>
+
+
+                                        <td> <a href="{{ path('my_app_ahmed_valider_Demande_Reservation', {'id': pt.id_r,'id_p': pt.idp}) }} " onclick="valider();" class="button"><i class="fa fa-list-ul"></i> accepter </a></td>
+                                        <td> <a href="{{ path('my_app_ahmed_refuser_Demande_Reservation', {'id': pt.id_r}) }}" onclick="refuser();" class="button"><i class="fa fa-list-ul"></i> refuser </a></td>
+
+                                    </tr>
+
+                                {% endfor %}
+
+                                 {{ render(controller('MyAppAhmedBundle:Default:menuDroit')) }}
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </li>
+
+                </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+</section>
+    {% endblock %}
+
+

@@ -1,0 +1,24 @@
+
+{% extends 'front2.html.twig' %}
+{% block body %}
+
+    <div class="container">
+       <center><h1>Liste d'avis</h1></center>
+
+        <table class="table table-condensed" >
+        <thead>
+        <tr>
+            <th>Utilisateur</th>
+            <th>Avis</th>
+        </tr>
+        </thead>
+    {% for evaluation in evaluations %}
+<tr>
+    <td>{{ evaluation.user.nom }}</td>
+    <td>{{ evaluation.avis }}</td>
+
+</tr>
+        {% endfor %}
+        </table>
+    </div>
+{% endblock %}

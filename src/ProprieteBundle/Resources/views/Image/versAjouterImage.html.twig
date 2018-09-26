@@ -1,0 +1,86 @@
+{% extends "front.html.twig" %}
+{% block body %}
+    <!-- CORE : begin -->
+    <div id="core" class="page-contact-us">
+
+
+
+        <!-- CONTENT SECTION : begin -->
+        <section class="content-section">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-sm-4">
+
+                        <h2>Ajouter une photo réelle</h2>
+                        <p>Veillez a bien choisir la photo pour aider les voyageurs<br>
+
+                           </p>
+                        <p>Si vous n'avez pas des reservation essayez de changer la photo<br>
+
+                           </p>
+
+
+                    </div>
+                    <div class="col-sm-7">
+
+                        <div class="contact-form-container">
+
+                            <h5>Ajouter des photos</h5>
+
+                            {{ form_start(form) }}
+
+
+
+                                <!-- FORM VALIDATION ERROR MESSAGE : begin -->
+                                <p class="alert-message warning validation" style="display: none;"><i class="ico fa fa-exclamation-circle"></i><strong>All fields are required!</strong></p>
+                                <!-- FORM VALIDATION ERROR MESSAGE : end -->
+
+                                <!-- SENDING REQUEST ERROR MESSAGE : begin -->
+                                <p class="alert-message warning request" style="display: none;"><i class="ico fa fa-exclamation-circle"></i><strong>Form not sent!</strong><br>There was a connection problem. Try again later.</p>
+                                <!-- SENDING REQUEST ERROR MESSAGE : end -->
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                            {{ form_widget(form.url,{'attr':{'class':'form-control required','placeholder':'image' | trans }}) }}
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <br/><br/>
+                                    </div>
+
+
+                                </div>
+                                   <br/><br/>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <p class="form-note">All fields are required</p>
+                                    </div><br/><br/><br/><br/><br/><br/>
+                                    <p class="form-submit">
+                                        <button class="button submit-btn" data-loading-label="Sending..." value="submit"
+                                                type="submit" ><i class="fa fa-envelope"></i> Ajouter propriete
+                                        </button>
+                                    </p>
+                                </div>
+                            {{ form_end(form) }}
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- CONTENT SECTION : end -->
+
+    </div>
+    <!-- CORE : end -->
+
+
+
+
+
+
+{% endblock %}

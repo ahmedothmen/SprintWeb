@@ -1,0 +1,91 @@
+{% extends "front.html.twig" %}
+
+{% block body %}
+<section id="browse">
+    <div class="container">
+        <div class="tabs-container browse-tabs-container">
+        <div class="browse-inner">
+            <div class="tabs-container browse-tabs-container">
+
+                <ul class="custom-list tab-title-list">
+                    <li class="tab-title active"><a href="#featured-properties">Voir Detail</a></li>
+
+                </ul>
+
+                <ul class="custom-list tab-content-list browse-contents">
+                    <li class="tab-content active">
+
+                        <div class="row">
+                            <div  style="padding-left:10%"> <p style="font-size:20px;color:greenyellow;font-style:italic;box-shadow: #0b0b0b"> {{ message }}</p> </div>
+
+
+
+
+                        <br> {% for pt in proprietes %}
+                                    <div class="col-sm-4">
+                                        <div class="top-destination">
+                                            <img class="destination-thumb" src="{{ asset(pt.url) }}" alt="">
+
+                                        </div>
+
+                                        <div class="top-destination">
+                                            <img class="destination-thumb" src="{{ asset(pt.url2) }}" alt="">
+
+                                        </div>
+
+                                        <div class="top-destination">
+                                            <img class="destination-thumb" src="{{ asset(pt.url3) }}" alt="">
+                                            <div class="top-destination-inner">
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                            <div class="col-sm-4">
+                            </br>
+                                </br>
+                                </br>
+                                </br>
+                                <h3>Description</h3>
+                                {% for pt in proprietes %}
+                               {{ pt.des }}
+                                {% endfor %}
+                                </br>
+                                <h3>Prix Par Nuit </h3>
+                                {% for pt in proprietes %}
+                                    {{ pt.prix }}
+                                {% endfor %}
+                                </br>
+                                <h3>Ville</h3>
+                                {% for pt in proprietes %}
+                                    {{ pt.vil }}
+                                {% endfor %}
+                                </br>
+                                <h3>Nbre Des Reservations</h3>
+                                {% for pt in proprietes %}
+
+                                    {{ pt.nb }}
+                                {% endfor %}
+                            </br>
+                                <h3>Categorie</h3>
+                                {% for pt in proprietes %}
+
+                                    {{ pt.cat }}
+                                {% endfor %}
+
+                            </div>
+
+                        </div>
+
+                    </li>
+
+                </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+</section>
+    {% endblock %}
+
+

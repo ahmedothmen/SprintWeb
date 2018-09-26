@@ -1,0 +1,548 @@
+{% extends "front.html.twig" %}
+{% block body %}
+
+
+
+    <!-- MAIN WRAPPER : begin -->
+    <div class="main-wrapper-container">
+        <div class="container">
+            <div id="main-wrapper">
+                <div class="row">
+                    <div class="col-md-8 col-md-push-4">
+
+                        <!-- PROPERTIES LISTING : begin -->
+                        <div class="properties-listing">
+
+                            <!-- PROPERTIES LISTING HEADER : begin -->
+                            <div class="properties-listing-header clearfix">
+
+                                <!-- LIST SORTING : begin -->
+                                <div class="list-sorting">
+                                    <form class="default-form" action="index.html">
+                                        <h5>Sort By</h5>
+
+                                       <span class="select-box">
+                                                    <select name="sort-alphabetical">
+                                                        <option value="asc" ><a href="{{ path("sort_alphab")  }}" >A to Z</a></option>
+														<option value="desc">Z to A</option>
+													</select>
+
+
+												</span>
+
+                                        <span cla ss="select-box">
+													<select name="sort-price">
+
+                                                        <option value="asc">Price &uarr;</option>
+														<option value="desc">Price &darr;</option>
+													</select>
+												</span>
+                                    </form>
+                                </div>
+                                <!-- LIST SORTING : end -->
+
+                                <!-- LIST LAYOUT : begin -->
+                                <div class="list-layout">
+                                    <button class="button active" data-layout="grid"><i class="fa fa-th"></i></button>
+                                    <button class="button" data-layout="list"><i class="fa fa-list-ul"></i></button>
+                                </div>
+                                <!-- LIST LAYOUT : end -->
+
+                            </div>
+                            <!-- PROPERTIES LISTING HEADER : end -->
+
+
+                                <!-- PROPERTY 1 : end -->
+
+                                <!-- PROPERTY 2 : begin -->
+
+                                <!-- PROPERTY 2 : end -->
+
+                                <!-- PROPERTY 3 : begin -->
+
+                                <!-- PROPERTY 3 : end -->
+
+                                <!-- PROPERTY 4 : begin -->
+
+                                <!-- PROPERTY 4 : end -->
+
+                                <!-- PROPERTY 5 : begin -->
+
+                                <!-- PROPERTY 5 : end -->
+
+                                <!-- PROPERTY 6 : begin -->
+
+                                <!-- PROPERTY 6 : end -->
+
+                                <!-- PROPERTY 7 : begin -->
+
+                                <!-- PROPERTY 7 : end -->
+
+                                <!-- PROPERTY 8 : begin -->
+
+
+                                <!-- PROPERTY 9 : begin -->
+
+                                <!-- PROPERTY 9 : end -->
+
+
+                            <!-- PROPERTY LIST : end -->
+
+                            <!-- PROPERTIES LISTING FOOTER : begin -->
+
+                            <!-- PROPERTIES LISTING FOOTER : end -->
+
+                        </div>
+                        <!-- PROPERTIES LISTING : end -->
+
+                    </div>
+                    <div class="col-md-4 col-md-pull-8">
+
+                        <!-- PROPERTIES SEARCH : begin -->
+                        <aside class="properties-search">
+                            <h3 class="properties-search-title">Search &amp; Filter</h3>
+
+                            <!-- PROPERTIES SEARCH BASIC : begin -->
+                            <div class="properties-search-basic">
+
+                                <!-- TYPE : begin -->
+
+                                <!-- TYPE : end -->
+
+                                <!-- FORM SWAP : begin -->
+
+
+                                    <!-- SEARCH INPUT : begin -->
+
+                                    <!-- SEARCH INPUT : end -->
+
+                                    <!-- ARRIVAL DATE, DEPARTURE DATE : begin -->
+
+                                    <!-- ARRIVAL DATE, DEPARTURE DATE : end -->
+
+                                    <!-- NUMBER OF ADULTS AN CHILDREN : begin -->
+
+                                    <!-- NUMBER OF ADULTS AN CHILDREN : end -->
+
+
+
+                                </form>
+                                <!-- FORM SWAP : begin -->
+
+                                <!-- FORM BOOK : begin -->
+                                <!-- FORM BOOK : begin -->
+
+                                <!-- FORM RENT : begin -->
+                                <!-- FORM RENT : begin -->
+
+                            </div>
+                            <!-- PROPERTIES SEARCH BASIC : end -->
+
+                            <hr class="form-divider">
+
+                            <!-- PROPERTIES SEARCH FILTER : begin -->
+
+                            <!-- PROPERTIES SEARCH FILTER : end -->
+
+                        </aside>
+                        <!-- PROPERTIES SEARCH : end -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MAIN WRAPPER : end -->
+
+    </div>
+    <!-- CORE : end -->
+
+    </div>
+    </div>
+    </div>
+    </aside>
+    <!-- BOTTOM PANEL : end -->
+
+
+
+    <!-- MAIN WRAPPER : begin -->
+    <div class="main-wrapper-container">
+        <div class="container">
+            <div id="main-wrapper">
+                <div class="row">
+                    <div class="col-md-8 col-md-push-4">
+
+                        <!-- PROPERTIES LISTING : begin -->
+                        <div class="properties-listing">
+
+                            <!-- PROPERTIES LISTING HEADER : begin -->
+                            <div class="properties-listing-header clearfix">
+
+                                <!-- LIST SORTING : begin -->
+                                <div class="list-sorting">
+                                    <form class="default-form" action="index.html">
+                                        <h5>Sort By</h5>
+                                        <a  href="{{ path("sort_alphab") }}">Alphabet </a>
+                                        &nbsp;
+                                        <a  href="{{ path("sort_prix") }}">Price</a>
+
+
+
+                                    </form>
+                                </div>
+                                <!-- LIST SORTING : end -->
+
+                                <!-- LIST LAYOUT : begin -->
+                                <div class="list-layout">
+                                    <button class="button active" data-layout="grid"><i class="fa fa-th"></i></button>
+                                    <button class="button" data-layout="list"><i class="fa fa-list-ul"></i></button>
+                                </div>
+                                <!-- LIST LAYOUT : end -->
+
+                            </div>
+                            <!-- PROPERTIES LISTING HEADER : end -->
+
+                            <!-- PROPERTY LIST : begin -->
+                            <!-- PROPERTY LIST : begin -->
+                            <ul class="custom-list clearfix property-list layout-grid">
+                                {% for Experience in Experience %}
+                                <!-- PROPERTIES LISTING : begin -->
+                                <!-- PROPERTY 1 : begin -->
+                                <li class="property">
+                                    <a href="{{ path('Details_exp',{'idexp':Experience.getIdXp()}) }}" class="property-thumb" >
+                                    <img  src="{{ asset('images/products/'~ Experience.getImageName()) }}" >
+                                    </a>
+                                    <div class="property-content">
+                                        <h4 class="property-title"><a href="">  {{ Experience.getNomXp() }}</a></h4>
+                                        <div class="property-price-rating">
+
+                                            <div class="property-price"><strong>Type</strong> : {{Experience.type}}</div>
+                                            <div class="property-price"><strong>prix</strong> :{{Experience.getprixXp()}}</div>
+                                            <div class="property-price"><strong>Utilisateur</strong> : {{Experience.getIdUser.username}}</div>
+
+
+                                        </div>
+                                    </div>
+                                </li>
+
+                            {% endfor %}
+                            </ul>
+                            <!-- PROPERTY LIST : end -->
+
+                            <!-- PROPERTIES LISTING FOOTER : begin -->
+                            <div class="properties-listing-footer clearfix">
+                                <div class="default-form">
+                                    <div class="navigation">
+                                        {{ knp_pagination_render(Experience) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- PROPERTIES LISTING FOOTER : end -->
+
+                        </div>
+                        <!-- PROPERTIES LISTING : end -->
+
+                    </div>
+                    <div class="col-md-4 col-md-pull-8">
+
+                        <!-- PROPERTIES SEARCH : begin -->
+                        <aside class="properties-search">
+                            <h3 class="properties-search-title">Search &amp; Filter</h3>
+
+                            <!-- PROPERTIES SEARCH BASIC : begin -->
+                            <div class="properties-search-basic">
+
+                                <!-- TYPE : begin -->
+                                <p class="form-row textalign-center default-form properties-search-type">
+											<span class="radio-input">
+												<input id="filter_type_swap" type="radio" name="filter_type" value="swap" data-type="swap" checked="checked">
+												<label for="filter_type_swap">Swap</label>
+											</span>
+                                    <span class="radio-input">
+												<input id="filter_type_book" type="radio" name="filter_type" value="book" data-type="book">
+												<label for="filter_type_book">Book</label>
+											</span>
+                                    <span class="radio-input">
+												<input id="filter_type_rent" type="radio" name="filter_type" value="rent" data-type="rent">
+												<label for="filter_type_rent">Rent</label>
+											</span>
+                                </p>
+                                <!-- TYPE : end -->
+
+                                <!-- FORM SWAP : begin -->
+                                <form class="default-form" action="index.html" id="properties-search-form-swap">
+
+                                    <!-- SEARCH INPUT : begin -->
+                                    <p class="search-input">
+                                        <input type="text" placeholder="Where do you want to swap?">
+                                    </p>
+                                    <!-- SEARCH INPUT : end -->
+
+                                    <!-- ARRIVAL DATE, DEPARTURE DATE : begin -->
+                                    <p class="form-row clearfix">
+												<span class="calendar-input input-left" title="Arrival">
+													<input type="text" name="arrival" placeholder="Arrival" data-dateformat="m/d/y">
+													<i class="fa fa-calendar"></i>
+												</span>
+                                        <span class="calendar-input input-right" title="Departure">
+													<input type="text" name="departure" placeholder="Departure" data-dateformat="m/d/y">
+													<i class="fa fa-calendar"></i>
+												</span>
+                                    </p>
+                                    <!-- ARRIVAL DATE, DEPARTURE DATE : end -->
+
+                                    <!-- NUMBER OF ADULTS AN CHILDREN : begin -->
+                                    <p class="form-row clearfix">
+												<span class="select-box input-left" title="Adults">
+													<select name="adults" data-placeholder="Adults">
+														<option>Adults</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+													</select>
+												</span>
+                                        <span class="select-box input-right" title="Children">
+													<select name="children" data-placeholder="Children">
+														<option>Children</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+													</select>
+												</span>
+                                    </p>
+                                    <!-- NUMBER OF ADULTS AN CHILDREN : end -->
+
+                                    <p class="form-row">
+                                        <button class="button submit-btn"><i class="fa fa-search"></i> Search</button>
+                                    </p>
+
+                                </form>
+                                <!-- FORM SWAP : begin -->
+
+                                <!-- FORM BOOK : begin -->
+                                <form class="default-form" action="index.html" id="properties-search-form-book" style="display: none;">
+
+                                    <!-- SEARCH INPUT : begin -->
+                                    <p class="search-input">
+                                        <input type="text" placeholder="Where do you want to book?">
+                                    </p>
+                                    <!-- SEARCH INPUT : end -->
+
+                                    <!-- ARRIVAL DATE, DEPARTURE DATE : begin -->
+                                    <p class="form-row clearfix">
+												<span class="calendar-input input-left" title="Arrival">
+													<input type="text" name="arrival" placeholder="Arrival" data-dateformat="m/d/y">
+													<i class="fa fa-calendar"></i>
+												</span>
+                                        <span class="calendar-input input-right" title="Departure">
+													<input type="text" name="departure" placeholder="Departure" data-dateformat="m/d/y">
+													<i class="fa fa-calendar"></i>
+												</span>
+                                    </p>
+                                    <!-- ARRIVAL DATE, DEPARTURE DATE : end -->
+
+                                    <!-- NUMBER OF ADULTS AN CHILDREN : begin -->
+                                    <p class="form-row clearfix">
+												<span class="select-box input-left" title="Adults">
+													<select name="adults" data-placeholder="Adults">
+														<option>Adults</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+													</select>
+												</span>
+                                        <span class="select-box input-right" title="Children">
+													<select name="children" data-placeholder="Children">
+														<option>Children</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+													</select>
+												</span>
+                                    </p>
+                                    <!-- NUMBER OF ADULTS AN CHILDREN : end -->
+
+                                    <p class="form-row">
+                                        <button class="button submit-btn"><i class="fa fa-search"></i> Search</button>
+                                    </p>
+
+                                </form>
+                                <!-- FORM BOOK : begin -->
+
+                                <!-- FORM RENT : begin -->
+                                <form class="default-form" action="index.html" id="properties-search-form-rent" style="display: none;">
+
+                                    <!-- SEARCH INPUT : begin -->
+                                    <p class="search-input">
+                                        <input type="text" placeholder="Where do you want to rent?">
+                                    </p>
+                                    <!-- SEARCH INPUT : end -->
+
+                                    <!-- ARRIVAL DATE, DEPARTURE DATE : begin -->
+                                    <p class="form-row clearfix">
+												<span class="calendar-input input-left" title="Arrival">
+													<input type="text" name="arrival" placeholder="Arrival" data-dateformat="m/d/y">
+													<i class="fa fa-calendar"></i>
+												</span>
+                                        <span class="calendar-input input-right" title="Departure">
+													<input type="text" name="departure" placeholder="Departure" data-dateformat="m/d/y">
+													<i class="fa fa-calendar"></i>
+												</span>
+                                    </p>
+                                    <!-- ARRIVAL DATE, DEPARTURE DATE : end -->
+
+                                    <!-- NUMBER OF ADULTS AN CHILDREN : begin -->
+                                    <p class="form-row clearfix">
+												<span class="select-box input-left" title="Adults">
+													<select name="adults" data-placeholder="Adults">
+														<option>Adults</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+													</select>
+												</span>
+                                        <span class="select-box input-right" title="Children">
+													<select name="children" data-placeholder="Children">
+														<option>Children</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+													</select>
+												</span>
+                                    </p>
+                                    <!-- NUMBER OF ADULTS AN CHILDREN : end -->
+
+                                    <p class="form-row">
+                                        <button class="button submit-btn"><i class="fa fa-search"></i> Search</button>
+                                    </p>
+
+                                </form>
+                                <!-- FORM RENT : begin -->
+
+                            </div>
+                            <!-- PROPERTIES SEARCH BASIC : end -->
+
+                            <hr class="form-divider">
+
+                            <!-- PROPERTIES SEARCH FILTER : begin -->
+                            <div class="properties-search-filter">
+                                <form class="default-form" action="index.html">
+
+                                    <h4 class="filter-title">Filter Results</h4>
+
+                                    <!-- PRICE FILTER : begin -->
+                                    <div class="price-filter toggle-container">
+                                        <h5 class="toggle-title">By Price</h5>
+                                        <div class="toggle-content">
+
+                                            <div class="slider-range-container">
+                                                <div class="slider-range" data-min="100" data-max="2000" data-step="100" data-default-min="100" data-default-max="500" data-currency="$"></div>
+                                                <div class="clearfix">
+                                                    <input type="text" class="range-from" value="$ 10">
+                                                    <input type="text" class="range-to" value="$ 500">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!-- PRICE FILTER : end -->
+
+                                    <!-- RATING FILTER : begin -->
+                                    <div class="rating-filter toggle-container">
+                                        <h5 class="toggle-title">By Rating</h5>
+                                        <div class="toggle-content">
+
+                                            <ul class="custom-list rating-filter-list">
+                                                <li>
+															<span class="checkbox-input">
+																<input type="checkbox" id="rating-filter-5star" checked="checked">
+																<label for="rating-filter-5star">
+																	<span class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
+																	<span class="label">5 stars</span>
+																</label>
+															</span>
+                                                </li>
+                                                <li>
+															<span class="checkbox-input">
+																<input type="checkbox" id="rating-filter-4star">
+																<label for="rating-filter-4star">
+																	<span class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></span>
+																	<span class="label">4 stars</span>
+																</label>
+															</span>
+                                                </li>
+                                                <li>
+															<span class="checkbox-input">
+																<input type="checkbox" id="rating-filter-3star">
+																<label for="rating-filter-3star">
+																	<span class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></span>
+																	<span class="label">3 stars</span>
+																</label>
+															</span>
+                                                </li>
+                                                <li>
+															<span class="checkbox-input">
+																<input type="checkbox" id="rating-filter-2star">
+																<label for="rating-filter-2star">
+																	<span class="stars"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></span>
+																	<span class="label">2 stars</span>
+																</label>
+															</span>
+                                                </li>
+                                                <li>
+															<span class="checkbox-input">
+																<input type="checkbox" id="rating-filter-1star">
+																<label for="rating-filter-1star">
+																	<span class="stars"><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></span>
+																	<span class="label">1 star</span>
+																</label>
+															</span>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                    <!-- RATING FILTER : end -->
+
+                                    <!-- ADDITIONAL FILTER : begin -->
+
+                                    <!-- ADDITIONAL FILTER : end -->
+
+                                </form>
+                            </div>
+                            <!-- PROPERTIES SEARCH FILTER : end -->
+
+                        </aside>
+                        <!-- PROPERTIES SEARCH : end -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MAIN WRAPPER : end -->
+
+    </div>
+    <!-- CORE : end -->
+
+    </div>
+    </div>
+    </div>
+    </aside>
+    <!-- BOTTOM PANEL : end -->
+
+
+
+{% endblock %}

@@ -1,0 +1,41 @@
+<div class="row">
+{% for pt in proprietes %}
+ {% if loop.index <4 %}
+    <div class="col-sm-4">
+    <div class="top-destination">
+        {% set lien = 'http://localhost/SprintWeb21/SprintWeb2/web/img/propriete/' ~ pt.url %}
+         <img class="destination-thumb" src="{{ lien }}" alt="">
+        <a href="{{ path('my_app_ahmed_voir_detail', {'id': pt.idP}) }}">  <div class="top-destination-inner">
+        <h3>{{ pt.ville }}</h3>
+        <h3>{{ pt.nb}}</h3><h3>reservation</h3>
+            </div>
+        </a>
+    </div>
+    </div>
+ {% endif %}
+    {% endfor %}
+</div>
+
+<div class="row">
+    {% for pt in proprietes %}
+        {% if loop.index >3 and loop.index<7 %}
+            <div class="col-sm-4">
+                <div class="top-destination">
+                    <img class="destination-thumb" src="{{ asset(pt.url) }}" alt="">
+                    <a href="{{ path('my_app_ahmed_voir_detail', {'id': pt.id}) }}"><div class="top-destination-inner">
+                        <h3>{{ pt.ville }}</h3>
+                        <h3>{{ pt.nb}}</h3>
+                        <h3>reservation</h3>
+                    </div>
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>
+
+
+
+
+
+

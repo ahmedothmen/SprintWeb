@@ -1,0 +1,33 @@
+<div class="row">
+{% for pt in proprietes %}
+
+        {% if loop.index <4 %}
+
+
+                <div class="col-sm-4">
+                    <div class="top-destination">
+            <!-- MEMBER 1 : begin -->
+                        <ul class="custom-list browse-members-list clearfix">
+                        <li class="member first-in-row">
+                            {% set lien = 'http://localhost/SprintWeb21/SprintWeb2/web/img/propriete/' ~ pt.url %}
+
+                            <a href="#" class="member-portrait"><img src="{{ asset(lien)}}" alt=""></a>
+                <h4 class="member-name"><a href="#">{{ pt.nom }}</a></h4>
+                <h5 class="member-place">{{ pt.prenom }}</h5>
+                <h4 class="member-name"><a href="#">{{ pt.nb }}</a></h4>
+            </li>
+                        </ul>
+                    </div>
+                </div>
+
+ {% endif %}
+    {% endfor %}
+
+</div>
+
+
+
+
+
+
+

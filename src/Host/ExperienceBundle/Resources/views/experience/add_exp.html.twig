@@ -1,0 +1,163 @@
+{% extends "front.html.twig" %}
+{% block body %}
+    <link rel="stylesheet" href="{{ asset('lobibox-master/dist/css/lobibox.min.css') }}"/>
+
+    <!-- CORE : begin -->
+    <div id="core" class="page-contact-us">
+
+        <!-- PAGE HEADER : begin -->
+        <div class="page-header has-nav">
+            <div class="container">
+                <div class="page-header-inner">
+                    <h1>Gestion des experiences</h1>
+                    <ul class="custom-list breadcrumbs">
+                        <li><a href="{{ asset('') }}">Home</a> / </li>
+                        <li><a href="contact-us.html">Contact Us</a></li>
+                    </ul>
+                    <nav class="page-header-nav">
+                        <ul class="custom-list clearfix">
+                            <li><a href={{ path('show_exp') }}>Mes experiences</a></li>
+                            <li class="active"><a href={{ path('exp_add') }}>Ajouter experience</a></li>
+
+
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <!-- PAGE HEADER : end -->
+
+        <!-- CONTENT SECTION : begin -->
+        <section class="content-section">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-sm-4">
+
+                        <h2>Be My Guest</h2>
+                        <a href="{{ asset('') }}"><img src="{{ asset('dummies/Logo.jpg') }}" alt="Casa"></a>
+
+                    </div>
+                    <div class="col-sm-7">
+
+                        <div class="contact-form-container">
+
+                            <h5>Experience </h5>
+
+
+                            <!-- FORM VALIDATION ERROR MESSAGE : begin -->
+                            <p class="alert-message warning validation" style="display: none;">
+                                <i class="ico fa fa-exclamation-circle"></i><strong>All fields are required!</strong></p>
+                            <!-- FORM VALIDATION ERROR MESSAGE : end -->
+
+                            <!-- SENDING REQUEST ERROR MESSAGE : begin -->
+                            <p class="alert-message warning request" style="display: none;"><i class="ico fa fa-exclamation-circle"></i><strong>Form not sent!</strong><br>There was a connection problem. Try again later.</p>
+                            <!-- SENDING REQUEST ERROR MESSAGE : end -->
+                            {{ form_start(form,{'attr': {'class':'default-form'}} ) }}
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    {{ form_widget(form.nom_xp, {'id':'nom','attr': {'required': 'required','placeholder':'Nom' }}) }}
+                                    <h5>Arrivée </h5>
+
+                                    {{ form_widget(form.arrival, {'id':'arrival','attr': {'required': 'required','class': ''}}) }}
+
+                                </div>
+                                <div class="col-sm-6">
+
+                                    {{ form_widget(form.type, {'id':'type','attr': {'required': 'required','class': ''}}) }}
+
+                                </div>
+                                <div class="col-sm-6">
+
+
+                                    <h5>Départ </h5>
+
+                                    {{ form_widget(form.departure, {'id':'departure','attr': {'required': 'required','class': ''}}) }}
+
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <h5>Participants </h5>
+
+                                    {{ form_widget(form.participants, {'id':'participants','attr': {'required': 'required','class': ''}}) }}
+                                </div>
+                                <div class="col-sm-6">
+                                    <h5>Prix</h5>
+
+                                    {{ form_widget(form.prix_xp, {'id':'prix_xp','attr': {'required': 'required','class': ''}}) }}
+
+                                </div>
+                            </div>,
+                            <h5>Description </h5>
+
+                            {{ form_widget(form.description, {'id':'description','attr': {'required': 'required','class': '','placeholder':'Descrivez votre expérience...'}}) }}
+                            <h5>Image </h5>
+
+                            {{ form_widget(form.imageFile, {'id':'imageFile','attr': {'required': '','class': ''}}) }}
+
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <p class="form-note">All fields are required</p>
+                                </div>
+                                <div class="col-sm-6">
+
+                                    {{ form_widget(form.Submit, {'attr': {'class': 'button submit-btn','onclick' :'validateForm()'}}) }}
+
+                                    {{ form_end(form)}}
+
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <!-- CONTENT SECTION : end -->
+
+    </div>
+    <!-- CORE : end -->
+
+    <script src="{{ asset('lobibox-master/lib/jquery.1.11.min.js') }}"> </script>
+    <script src="{{ asset('lobibox-master/dist/js/lobibox.min.js') }}"> </script>
+
+
+    <script>
+
+        function validateForm() {
+            var year1 = document.getElementById('host_experiencebundle_experience_arrival_year').value;
+            var month1 = document.getElementById('host_experiencebundle_experience_arrival_month').value - 1;
+            var day1 = document.getElementById('host_experiencebundle_experience_arrival_day').value;
+            var year2 = document.getElementById('host_experiencebundle_experience_departure_year').value;
+            var month2 = document.getElementById('host_experiencebundle_experience_departure_month').value - 1;
+            var day2 = document.getElementById('host_experiencebundle_experience_departure_day').value;
+
+            var d1 = new Date(year1, month1, day1);
+            var d2 = new Date(year2, month2, day2);
+            var d3 = new Date();
+
+            if (d1 > d2) {
+                Lobibox.notify('error', {
+                    title: 'Date error ',
+                    msg: 'please check your date . Date start > Date End  .'
+                });
+                return false;
+            }
+            if (d1 < d3) {
+                Lobibox.notify('error', {
+                    title: 'Date error ',
+                    msg: 'please check your Start date . it can t be < Date now   .'
+                });
+            }
+        }
+
+
+    </script>
+{% endblock %}

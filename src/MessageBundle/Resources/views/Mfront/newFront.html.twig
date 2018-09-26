@@ -1,0 +1,211 @@
+{% extends "front.html.twig" %}
+
+{% block body %}
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+
+    <script>
+        function getText() {
+            var node = document.getElementById('contenuTxt');
+            var text = node.innerHTML;
+            return text;
+        }
+        function setText() {
+            document.getElementById("contenu").setAttribute('value', getText());
+        }
+    </script>
+
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset("css/owl.carousel.css") }}">
+        <link rel="stylesheet" href="{{ asset("css/animate.custom.css") }}">
+        <link rel="stylesheet" href="{{ asset("css/magnific-popup.css") }}">
+        <link rel="stylesheet" href="{{ asset("css/style2.css") }}">
+        <link rel="stylesheet" href="{{ asset("css/skins/default2.css") }}">
+        <link href=http://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700 rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ asset('backOffice/css/vendor.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('backOffice/css/plugins.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('backOffice/css/pratham.min.css') }}">
+    {% endblock %}
+
+    <div id="core" class="page-contact-us">
+
+    <!-- PAGE HEADER : begin -->
+    <div class="page-header has-nav">
+        <div class="container">
+            <div class="page-header-inner">
+                <h1>Inbox</h1>
+                <nav class="page-header-nav">
+                    <ul class="custom-list clearfix">
+                        <li ><a href="{{ path('my_app_user_client') }}">Home</a></li>
+                        <li class="active"><a href="{{ path('message_byUserFI') }}">My Inbox</a></li>
+                        <li><a href="{{ path('chat_homepageF') }}">Chat rooms</a></li>
+                        <li><a href="{{ path('favoris_showF') }}">My Favourites</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- PAGE HEADER : end -->
+
+        <div class="container">
+        <body class="compose-modal">
+        <div class="prtm-wrapper">
+            <div class="prtm-main">
+                <div class="prtm-content-wrapper">
+                    <div class="prtm-content">
+                        <div class="mail-style ">
+                            <div class="row">
+                                <div class="col-lg-2 col-md-4 col-sm-12 mail-inbox"><a
+                                            class="btn btn-danger btn-lg btn-block mrgn-b-md" href="javascript:;">Compose</a>
+                                    <div class="prtm-full-block pad-tb-sm overflow-wrapper">
+                                        <div class="mrgn-b-md">
+                                            <ul class="email-tabs nav nav-tabs tabs-left">
+                                                <li class="active">
+                                                    <a data-toggle="tab" href="{{ path('message_byUserFI') }}" aria-expanded="true">
+                                                        <span class="mrgn-r-sm"><i class="fa fa-inbox"></i></span>
+                                                        Inbox <span class="badge badge-danger pull-right">{{ count }}</span>
+                                                    </a>
+                                                </li>
+
+                                                <li><a data-toggle="tab" href="{{ path('message_byUserFS') }}"
+                                                       aria-expanded="false"><span class="mrgn-r-sm"><i
+                                                                    class="fa fa-rocket"></i></span> Spam</a>
+                                                </li>
+
+                                                <li> <a data-toggle="tab" href="{{ path('message_byUserFT') }}"
+                                                        aria-expanded="false"><span class="mrgn-r-sm"><i
+                                                                    class="fa fa-trash"></i></span> Trash</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="email-labels pad-all-sm">
+                                            <h5 class="base-dark">Labels</h5>
+                                            <ul class="list-unstyled mrgn-all-none">
+                                                <li class="mrgn-b-xs"><a class="gray" href="javascript:;">
+                                                        Work
+                                                        <span class="label-info pull-right square-15"> </span>
+                                                    </a></li>
+                                                <li class="mrgn-b-xs"><a class="gray" href="javascript:;">
+                                                        Private
+                                                        <span class="label-warning pull-right square-15"> </span>
+                                                    </a></li>
+                                                <li class="mrgn-b-xs"><a class="gray" href="javascript:;">
+                                                        Client
+                                                        <span class="label-success pull-right square-15"> </span>
+                                                    </a></li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10 col-md-8 col-sm-12 mail-content">
+                                    <div class="compose">
+                                        <form method="post" action="">
+                                            <div class="compose-header">
+                                                <div class="compose-field">
+                                                    <div class="compose-field-left">
+                                                        <button class="compose-label" type="button">To</button>
+                                                    </div>
+                                                    <div class="compose-field-body">
+                                                        {% if (app.request.uri|last not in 1..9) and (app.request.uri|last !='y')  %}
+                                                            <div class="btn-group" style="width: 100%;">
+                                                                <select id="to" class="multiselect dropdown-toggle btn  btn-rounded"
+                                                                        data-toggle="dropdown" title="None selected" style="width: 100%; overflow: hidden;
+                                                                text-overflow: ellipsis;"><b class="caret"></b>
+                                                                    <option selected="true" disabled="disabled">To who ? </option>
+
+                                                                    {% for u in users %}
+                                                                        <option  class="radiobox" value="{{ u.id }}">{{ u.nom }} {{ u.prenom }}</option>
+                                                                    {% endfor %}
+                                                                </select>
+                                                                <script>
+                                                                    $(document).on("change", "#to", function() {
+                                                                        var y = $(this).find("option:selected").val();
+                                                                        $("#toWho").val(y);
+                                                                    });
+                                                                </script>
+                                                                <input  hidden type="text" name="toWho" id="toWho" >
+
+                                                            </div>
+                                                        {% else %}
+                                                            <div class="btn" style="width: 100%;">
+                                                                {{ recepteur.nom }} {{ recepteur.prenom }}
+                                                            </div>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                                <div class="compose-fields mrgn-b-xs"></div>
+
+                                                <div class="compose-field">
+                                                    <div class="compose-field-left">
+                                                        <button class="compose-label" type="button">Label</button>
+                                                    </div>
+
+                                                    <div class="compose-field-body">
+                                                        <div class="btn-group" style="width: 100%;">
+                                                            <select id="mlabel" class="multiselect dropdown-toggle btn  btn-rounded"
+                                                                    data-toggle="dropdown" title="None selected" style="width: 100%; overflow: hidden;
+                                                                text-overflow: ellipsis;"><b class="caret"></b>
+                                                                <option selected="true" disabled="disabled">Choose a Label</option>
+                                                                <option class="radiobox" value="Work">Work</option>
+                                                                <option value="Private">Private</option>
+                                                                <option value="Client">Client</option>
+                                                            </select>
+                                                            <input hidden type="text" name="label" id="label" >
+                                                            <script>
+                                                                $(document).on("change", "#mlabel", function() {
+                                                                    var x = $(this).find("option:selected").text();
+                                                                    $("#label").val(x);
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="compose-fields mrgn-b-xs"></div>
+
+
+                                                <div class="compose-field">
+                                                    <div class="compose-field-left">
+                                                        <button class="compose-label" type="button">Subject
+                                                        </button>
+                                                    </div>
+                                                    <div class="compose-field-body">
+                                                        <input class="compose-input" type="text" name="subject"
+                                                               id="subject"
+                                                               placeholder="Subject Here">
+                                                    </div>
+                                                </div>
+                                                <div class="compose-fields mrgn-b-xs"></div>
+                                            </div>
+                                            <div class="compose-body">
+
+                                                <div class="compose-message pad-all-xs">
+                                                    <div id="alerts"></div>
+
+                                                    {# tiny mce#}
+                                                            <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=mhcl9u203icqoyim65w4f8jy7nppdoqjbocdgeja266lptzf"></script>
+                                                            <script>tinymce.init({ selector:'#contenu' });</script>
+                                                        <textarea name="contenu" id="contenu" ></textarea>
+                                                </div>
+
+                                                <div class="compose-actions">
+                                                    <button type="submit" class="btn btn-primary btn-lg" type="button">
+                                                        <i class="fa fa-paper-plane" aria-hidden="true"></i> &nbsp;Send</button>
+                                                    <button class="btn btn-inverse btn-lg" type="button"><i
+                                                                class="fa fa-times" aria-hidden="true"></i>
+                                                        Discard</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </body>
+        </div>
+{% endblock %}

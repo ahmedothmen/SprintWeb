@@ -1,0 +1,54 @@
+{% extends "front.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('css/fosuser/css/style_fosuser.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset("css/owl.carousel.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/animate.custom.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/magnific-popup.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/style.css") }}">
+    <link rel="stylesheet" href="{{ asset("css/skins/default.css") }}">
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <br/> <br/>
+            <h2>Choisir une image...</h2>
+            <br/> <br/>
+            <br/> <br/>
+
+
+            <br/>
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                {{ form_start(form)  }}
+
+                         <br/>
+                        <br/>
+                <button type="submit" value="submit">submit</button>
+
+                    </div>
+                {{ form_end(form) }}
+
+            </div>
+
+        </div>
+    </div>
+    <br/> <br/>
+    <br/> <br/>
+    <br/> <br/>
+    <br/> <br/>
+    <br/> <br/>
+    <br/> <br/>
+    <br/> <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+{% endblock  %}

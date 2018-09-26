@@ -1,0 +1,129 @@
+{% extends 'front.html.twig' %}
+
+{% block body %}
+    <div id="core">
+<br>
+<center><h2>Experiences</h2></center>
+        <hr>
+        <section id="browse">
+
+        <div class="container">
+    <div class="browse-inner">
+
+<li class="tab-content">
+
+        <!-- BROWSE DESTINATIONS : begin -->
+        <div class="browse-destinations">
+
+            <div class="row">
+                <div class="col-sm-4">
+
+                    <!-- TOP DESTINATION 1 : begin -->
+                    <div class="top-destination">
+                        <img class="destination-thumb" src="{{ asset('Slider/images/1.jpg') }}" alt="">
+
+                        <div class="top-destination-inner">
+                            <h3>Tunis</h3>
+
+                            <div class="form-group">
+                            </div>
+
+
+                            <a href="{{ path('avis_ajouter') }}" class="button"><i class="fa fa-list-ul"></i>Afficher</a>
+                            {{ moy|rating }}
+
+                        </div>
+
+                    </div>
+                    <br>
+                    <!-- TOP DESTINATION 1 : end -->
+
+                </div>
+                <div class="col-sm-4">
+
+                    <!-- TOP DESTINATION 2 : begin -->
+                    <div class="top-destination">
+                        <img class="destination-thumb" src="{{ asset('Slider/images/4.jpg') }}" alt="">
+                        <div class="top-destination-inner">
+                            <h3>Sousse</h3>
+                            <a href="#" class="button"><i class="fa fa-list-ul"></i>Afficher</a>
+                            {{ 4|rating }}
+
+                        </div>
+                    </div>
+                    <!-- TOP DESTINATION 2 : end -->
+
+                </div>
+                <div class="col-sm-4">
+                    <!-- TOP DESTINATION 3 : begin -->
+                    <div class="top-destination">
+                        <img class="destination-thumb" src="{{ asset('img/djerba.jpg') }}" alt="">
+                        <div class="top-destination-inner">
+                            <h3>Djerba</h3>
+                            <a href="#" class="button"><i class="fa fa-list-ul"></i>Afficher</a>
+                            {{ 3|rating }}
+
+                        </div>
+                    </div>
+                    <!-- TOP DESTINATION 3 : end -->
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4">
+
+                    <!-- TOP DESTINATION 4 : begin -->
+                    <div class="top-destination">
+                        <img class="destination-thumb" src="{{ asset('img/monastir.jpg') }}" alt="">
+                        <div class="top-destination-inner">
+                            <h3>Monastir</h3>
+                            <a href="#" class="button"><i class="fa fa-list-ul"></i>Afficher</a>
+                            {{ 5|rating }}
+
+                        </div>
+                    </div>
+                    <!-- TOP DESTINATION 4 : end -->
+
+                </div>
+                <div class="col-sm-4">
+
+                    <!-- TOP DESTINATION 5 : begin -->
+                    <div class="top-destination">
+                        <img class="destination-thumb" src="{{ asset('img/hammamet.jpg') }}" alt="">
+                        <div class="top-destination-inner">
+                            <h3>Hammamet</h3>
+                            <a href="#" class="button"><i class="fa fa-list-ul"></i>Afficher</a>
+                            {{ 3|rating }}
+
+                        </div>
+                    </div>
+                    <!-- TOP DESTINATION 5 : end -->
+
+                </div>
+                <div class="col-sm-4">
+
+                    <!-- TOP DESTINATION 6 : begin -->
+                    <div class="top-destination">
+                        <img class="destination-thumb" src="{{ asset('img/tozeur.jpg') }}" alt="">
+                        <div class="top-destination-inner">
+                            <h3>Tozeur</h3>
+                            <a href="#" class="button"><i class="fa fa-list-ul"></i>Afficher</a>
+                            {{ 2|rating }}
+
+                        </div>
+                    </div>
+                    <!-- TOP DESTINATION 6 : end -->
+
+                </div>
+            </div>
+
+        </div>
+        <!-- BROWSE DESTINATIONS : end -->
+
+    </li>
+    </div>
+    </div>
+        </section>
+    </div><br><br>
+
+{% endblock %}

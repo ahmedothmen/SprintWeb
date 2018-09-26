@@ -1,0 +1,3 @@
+evaluation_homepage:
+    path:     /evaluation
+    defaults: { _controller: evaluationBundle:evaluation:new }

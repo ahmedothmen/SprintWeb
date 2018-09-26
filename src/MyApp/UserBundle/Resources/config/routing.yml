@@ -1,0 +1,39 @@
+my_app_user_homepage:
+    path:     /
+    defaults: { _controller: MyAppUserBundle:Default:index }
+my_app_user_homepage:
+    path:     /
+    defaults: { _controller: MyAppUserBundle:Default:index }
+my_app_user_homepageB:
+    path:     /home
+    defaults: { _controller: MyAppUserBundle:Default:indexB }
+page_test:
+    path:     /test
+    defaults: { _controller: MyAppUserBundle:Default:test }
+page_connect:
+    path:     /evaluation/cnx
+    defaults: { _controller: MyAppUserBundle:Default:connect }
+page_tunis:
+    path:     /experience/tunis
+    defaults: { _controller: MyAppUserBundle:Default:tunis }
+avis_ajouter:
+    path:     /avis/evaluation/
+    defaults: { _controller: MyAppUserBundle:Evaluation:evaluation }
+avis_afficher:
+    path:     /avis/afficher
+    defaults: { _controller: MyAppUserBundle:Evaluation:afficher }
+avis_supprimer:
+    path:     /avis/supprimer{id}
+    defaults: { _controller: MyAppUserBundle:Evaluation:supprimer }
+avis_modifier:
+    path:     /avis/modifier{id}
+    defaults: { _controller: MyAppUserBundle:Evaluation:modifier }
+avis_ajouter_back:
+    path:     /admin/avis
+    defaults: { _controller: MyAppUserBundle:Evaluation:afficherBack }
+avis_supprimer_back:
+    path:     /admis/avis/supprimer{id}
+    defaults: { _controller: MyAppUserBundle:Evaluation:supprimerBack }
+add_image:
+    path:     /addImageP
+    defaults: { _controller: MyAppUserBundle:Default:ajouterImage }

@@ -1,0 +1,82 @@
+{% extends "front.html.twig" %}
+
+{% block body %}
+    </br>
+
+    {{ render(controller('MyAppAhmedBundle:Default:listProprietByIdUser')) }}
+    <section id="browse">
+
+        <div class="container">
+        <div class="tabs-container browse-tabs-container">
+        <div class="browse-inner">
+            <div class="tabs-container browse-tabs-container">
+
+                <ul class="custom-list tab-title-list">
+                    <li class="tab-title active"><a href="#featured-properties">List Des Demandes</a></li>
+
+                </ul>
+
+                <ul class="custom-list tab-content-list browse-contents">
+                    <li class="tab-content active">
+
+                        <div class="row">
+
+                            <table border="1">
+
+                                <thead>
+                                <tr>
+
+                                    <th>arrivee</th>
+                                    <th>depart</th>
+                                    <th>nbre de jours</th>
+                                    <th>prix total</th>
+                                    <th>nom de client</th>
+                                    <th>prenom de client</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for pt in proprietes %}
+
+                                    <tr>
+
+
+                                        <td>{{ pt.dtD |date('Y-m-d') }}</td>
+                                        <td>{{ pt.dtF |date('Y-m-d') }}</td>
+                                        <td>{{ pt.diff}}</td>
+                                        <td>{{ pt.prix * pt.diff }}</td>
+                                        <td>{{ pt.nom }}</td>
+                                        <td>{{ pt.prenom }}</td>
+
+                                    </tr>
+                                {% endfor %}
+
+
+
+
+                                {{ render(controller('MyAppAhmedBundle:Default:menuDroit')) }}
+                                {{ render(controller('MyAppAhmedBundle:Default:notificationNbreDemande')) }}
+                                </tbody>
+                            </table>
+                          <br/>
+                            <div style="padding-left:45%">
+                                <a href="{{ path('my_app_ahmed_reservation_excel') }}" class="button" style="background-color:green"><i class="fa fa-list-ul"></i>EXCEL</a>
+                            </div>
+
+
+                        </div>
+
+                    </li>
+
+                </ul>
+
+
+
+            </div>
+
+        </div>
+    </div>
+    </div>
+    </section>
+    {% endblock %}
+
+

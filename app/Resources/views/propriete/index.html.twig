@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Proprietes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idp</th>
+                <th>Categoriepropriete</th>
+                <th>Typepropriete</th>
+                <th>Pays</th>
+                <th>Ville</th>
+                <th>Rue</th>
+                <th>Titre</th>
+                <th>Prix</th>
+                <th>Nbrchambre</th>
+                <th>Nbrvoyageur</th>
+                <th>Description</th>
+                <th>Animaux</th>
+                <th>Fumeur</th>
+                <th>Alcool</th>
+                <th>Enfant</th>
+                <th>Idu</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for propriete in proprietes %}
+            <tr>
+                <td><a href="{{ path('propriete_show', { 'id': propriete.idP }) }}">{{ propriete.idP }}</a></td>
+                <td>{{ propriete.categoriepropriete }}</td>
+                <td>{{ propriete.typepropriete }}</td>
+                <td>{{ propriete.pays }}</td>
+                <td>{{ propriete.ville }}</td>
+                <td>{{ propriete.rue }}</td>
+                <td>{{ propriete.titre }}</td>
+                <td>{{ propriete.prix }}</td>
+                <td>{{ propriete.nbrchambre }}</td>
+                <td>{{ propriete.nbrvoyageur }}</td>
+                <td>{{ propriete.description }}</td>
+                <td>{% if propriete.animaux %}Yes{% else %}No{% endif %}</td>
+                <td>{% if propriete.fumeur %}Yes{% else %}No{% endif %}</td>
+                <td>{% if propriete.alcool %}Yes{% else %}No{% endif %}</td>
+                <td>{% if propriete.enfant %}Yes{% else %}No{% endif %}</td>
+                <td>{{ propriete.idU }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('propriete_show', { 'id': propriete.idP }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('propriete_edit', { 'id': propriete.idP }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('propriete_new') }}">Create a new propriete</a>
+        </li>
+    </ul>
+{% endblock %}

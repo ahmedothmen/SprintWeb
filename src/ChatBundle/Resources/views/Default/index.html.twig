@@ -1,0 +1,97 @@
+{% extends "back.html.twig" %}
+{% block body %}
+
+    <script src="{{ asset('Chat/jquery.js') }}"></script>
+    <script src="{{ asset('Chat/script.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('Chat/css.css') }}">
+    <link rel="stylesheet" href="{{ asset('Chat/chat.css') }}">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"></script>
+    <script src="https://fonts.googleapis.com/css?family=Lato"></script>
+
+    <div class="prtm-content-wrapper">
+        <div class="prtm-content">
+            <div class="prtm-page-bar">
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item text-capitalize">
+                        <h3>Chat Rooms</h3> </li>
+                    <li class="breadcrumb-item"><a href="#">User</a></li>
+                    <li class="breadcrumb-item active"><a href="#">Chats</a></li>
+                </ul>
+
+            </div>
+            <div class="user-chat-wrap prtm-block">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
+                        <div class="chat-list-sidebar prtm-block-no-gutter clearfix">
+                            <div>
+                                <ul class="prtm-large-tabs nav nav-tabs tabs-left">
+
+                                    <div id="selectUser">
+                                        {% for user in users %}
+                                    <li class="active">
+                                             {% if user.roles[0]=='ROLE_CLIENT' %}
+
+                                        <a href="#" data-toggle="tab" onclick="return false;" data-number="{{ user.id }}" class="changeUser" >
+                                            <h4 class="mrgn-b-md">Client</h4>
+                                            <div class="clearfix">
+                                                <div class="thumb-wid mrgn-r-sm pull-left">
+                                                    {% set lien = 'http://localhost/SprintWeb21/SprintWeb2/web/img/propriete/' ~ user.imgurl %}
+                                                    <div class="display-ib pos-relative"> <img name="{{ user.id }}" class="img-responsive img-circle" src="{{ lien}}" width="95" height="95" alt="Chat person image"> </div>
+                                                </div>
+                                                <div class="thumb-content pull-left">
+                                                    <div class="clearfix">
+                                                        <div class="thumb-content pull-left">
+                                                            <h6>{{ user.nom }} {{ user.prenom }}</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                             {% endif %}
+                                    </li>
+                                        {% endfor %}
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                        <div class="chat-window pad-l-lg  clearfix">
+                            <div class="tab-content mrgn-b-lg">
+                                <div class="tab-pane active" id="tab-panel-1">
+                                    <div id="belousovChat" data-author="{{ currentUser.id }}" data-addressee="" data-action="{{ getMessageUrl }}" >
+                                        <div class="prtm-messages-list">
+                                            <div class="mrgn-b-lg">
+                                                <div class="clearfix">
+                                                    <div id="belousovMessageZone"></div>
+
+                                                    <div id="belousovFormZone">
+                                                        {{ form_start(chatForm) }}
+
+                                                        {{ form_widget(chatForm.messageText) }}
+
+                                                        {{ form_errors(chatForm) }}
+
+                                                        {{ form_end(chatForm) }}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- tab-content closed -->
+                        </div>
+                        <!-- chat-window closed -->
+                    </div>
+                </div>
+                <!-- row closed -->
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}
+

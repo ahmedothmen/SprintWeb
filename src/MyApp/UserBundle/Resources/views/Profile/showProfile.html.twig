@@ -1,0 +1,203 @@
+{% extends "back.html.twig" %}
+
+{% block body %}
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+    <div class="prtm-wrapper">
+        <div class="prtm-main">
+            <div class="prtm-content-wrapper">
+                <div class="prtm-content">
+                    <div class="prtm-page-bar">
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item text-capitalize">
+                                <h3>User Profile</h3> </li>
+                            <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+                            <li class="breadcrumb-item"><a href="javascript:;" class="active">User Profile</a></li>
+                        </ul>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-3">
+                            <div class="prtm-full-block text-center">
+                                <div class="pad-all-md">
+                                    <div class="pos-relative">
+
+                                        <div class="contextual-link">
+                                            {% if (app.user.id)==user.id %}
+                                            <div class="dropdown"> <a href="javascript:;" class="more-btn" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="true">more<i class="fa fa-angle-down"></i></a>
+                                                <ul class="dropdown-menu dropdown-icon dropdown-menu-right">
+                                                    <li>
+                                                        <a href="#basic" data-toggle="modal"> <i class="fa fa-pencil"></i> <span class="mrgn-l-sm">Edit </span> </a>
+                                                    </li>
+
+
+                                                    <div class="modal fade" id="basic" aria-hidden="true">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                                                    <h4 class="modal-title">Profile Pic</h4>
+                                                                </div>
+                                                                <div class="modal-body"> <p>Select a picture to update</p> </div>
+                                                                {{ form_start(form)  }}
+                                                                {{ form_row(form.imageFile) }}
+
+
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-outline-inverse" data-dismiss="modal">Close</button>
+                                                                    <input type="submit" class="btn btn-danger" value="Save changes">
+                                                                </div>
+                                                                {{ form_end(form) }}
+                                                            </div>
+                                                            <!-- /.modal-content -->
+                                                        </div>
+                                                        <!-- /.modal-dialog -->
+                                                    </div>
+
+
+                                                    <li>
+                                                        <a href="javascript:;"> <i class="fa fa-trash-o"></i> <span class="mrgn-l-sm">Delete</span> </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="mrgn-b-lg"> <img  name="{{ user.id }}" src="{{ asset('img/users/' ~ user.imageName )}}" class="img-responsive img-circle display-ib" width="140" height="140" alt="user profile image"> </div>
+                                    <h5>{{ user.nom }} {{ user.prenom }}</h5>
+                                    <p>Art director</p>
+                                    <p>Hi! I'm Terrance arnold the Senior UI Designer at LTMR. We hope you enjoy the design and quality here.</p>
+                                </div>
+                                <div class="box-type-border">
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 pad-tb-md"> <strong class="text-primary">200</strong>
+                                        <br>Connections </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 pad-tb-md"> <strong class="text-primary">1.9 M</strong>
+                                        <br>Followers </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="text-left pad-all-md">
+                                    <div class="mrgn-b-xs">
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Member since</div>
+                                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 pad-all-none base-dark">Jan 2012</div>
+                                        </div>
+                                    </div>
+                                    <div class="mrgn-b-xs">
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Orders</div>
+                                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 pad-all-none base-dark">577</div>
+                                        </div>
+                                    </div>
+                                    <div class="mrgn-b-xs">
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Post</div>
+                                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 pad-l-none base-dark">25</div>
+                                        </div>
+                                    </div>
+                                    <div class="mrgn-b-xs">
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Task Done</div>
+                                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 pad-l-none base-dark">1255</div>
+                                        </div>
+                                    </div>
+                                    <div class="mrgn-b-md">
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">Email </div>
+                                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 pad-l-none base-dark">{{ user.email }}</div>
+                                        </div>
+                                    </div> <a href="{{ path('message_new2',{'id':user.id}) }}" id="send{{ user.id }}" name="send" class="btn-block btn btn-primary mrgn-b-md">Send Message</a>
+
+                                    <div class="user-social-links">
+                                        <ul class="text-center list-inline mrgn-all-none">
+                                            <li> <a class="gray" href="javascript:;"><i class="fa fa-facebook" aria-hidden="true"></i></a> </li>
+                                            <li class="mrgn-l-xs"> <a class="gray" href="javascript:;"><i class="fa fa-twitter" aria-hidden="true"></i></a> </li>
+                                            <li class="mrgn-l-xs"> <a class="gray" href="javascript:;"><i class="fa fa-linkedin" aria-hidden="true"></i></a> </li>
+                                            <li class="mrgn-l-xs"> <a class="gray" href="javascript:;"><i class="fa fa-google-plus" aria-hidden="true"></i></a> </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-9">
+                            <div class="prtm-block">
+                                <div class="mrgn-b-lg">
+                                    <div class="row">
+                                        <div class="col-xs-4 col-sm-5 col-md-5 col-lg-5">
+                                            <h3 class="mrgn-all-none">Profile Details</h3> </div>
+                                    </div>
+                                </div>
+                                <div class="tab-content">
+                                    <div id="profile-tab" class="tab-pane fade in active">
+                                        <div class="mrgn-b-lg">
+                                            <h5 class="mrgn-b-md"><span class="display-ib mrgn-r-sm"><i class="fa fa-file-text-o" aria-hidden="true"></i></span>Summary</h5>
+                                            <p>Hi, This is Terrance arnold. I am feeling glad for what I have achieved here. But I think life is more about helping people rather than commanding them. I feel life is also full of variations in designs. In terms of design, nature creates beautiful graphs and sets lot of colors in our personal life.</p>
+                                            <p>So yes I get ideas from nature. The way it designs hills, oceans and fills colors into them. I feel lucky for having this life and capable of identifying hidden treasures beneath a wonderful design.</p>
+                                        </div>
+                                        <div class="mrgn-b-lg">
+                                            <h5 class="mrgn-b-lg"><span class="display-ib mrgn-r-xs"><i class="fa fa-paperclip" aria-hidden="true"></i></span>Expertise</h5>
+                                            <div class="text-center clearfix">
+                                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                                    <div class="piechart-success-normal prtm-pie-chart mrgn-b-md" data-percent="73"><span class="fa-lg" data-counter="CounterUp">73</span> </div>
+                                                    <h5>Marketing</h5> </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                                    <div class="piechart-success-normal prtm-pie-chart mrgn-b-md" data-percent="82"><span class="fa-lg" data-counter="CounterUp">82</span> </div>
+                                                    <h5>SEO</h5> </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                                    <div class="piechart-success-normal prtm-pie-chart mrgn-b-md" data-percent="97"><span class="fa-lg" data-counter="CounterUp">97</span> </div>
+                                                    <h5>Development</h5> </div>
+                                                <div class="col-lg-3 col-md-3 col-sm-6">
+                                                    <div class="piechart-success-normal prtm-pie-chart mrgn-b-md" data-percent="53"><span class="fa-lg" data-counter="CounterUp">53</span> </div>
+                                                    <h5>Training</h5> </div>
+                                            </div>
+                                        </div>
+                                        <div class="mrgn-b-lg">
+                                            <h5 class="mrgn-b-lg"><span class="display-ib mrgn-r-sm"><i class="fa fa-suitcase" aria-hidden="true"></i></span>Experience</h5>
+                                            <div>
+                                                <div class="timeline-layout pos-relative">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                            <h6 class="text-primary">Lead designer / Developer</h6>
+                                                            <p class="mrgn-all-none">big-y.com</p>
+                                                            <p class="mrgn-all-none">2010-2015</p>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                                                            <p>As a lead designer I have worked at Big Y. For five years my work was in R&D department where I had to design many logos and check what different stuff could we made.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="timeline-layout pos-relative">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                            <h6 class="text-primary">Senior Graphic Designer</h6>
+                                                            <p class="mrgn-all-none">sentaVeda.com</p>
+                                                            <p class="mrgn-all-none">2007-2009</p>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                                                            <p> My journey as Senior Graphic Designer was wonderful. There I had came to know many new things and also how we approach composite designs. I spent about two years there.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="timeline-layout pos-relative">
+                                                    <div class="row">
+                                                        <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                                            <h6 class="text-primary">Lead designer / Developer</h6>
+                                                            <p class="mrgn-all-none">aud-profiles.com</p>
+                                                            <p class="mrgn-all-none">2005-2007</p>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                                                            <p>First time, when I became Lead designer I also learnt a lot of things and the big thing was managing a team as a lead. Supporting a team in hard times is difficult but thats what makes us learn lessons in our life.</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

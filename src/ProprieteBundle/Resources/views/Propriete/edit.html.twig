@@ -1,0 +1,174 @@
+{% extends "front.html.twig" %}
+{% block body %}
+
+    <div id="core" class="page-contact-us">
+
+        <!-- CONTENT SECTION : begin -->
+        <section class="content-section">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-sm-4">
+
+                        <h2>Be My Guest</h2>
+                        <p>Logement entier :Les voyageurs
+                            loueront le logement entier.
+                            Logements accessoires y compris.</p>
+                        <p>Chambre privée:Les voyageurs
+                            ont leur propre chambre privée
+                            pour dormir.
+                        <p>  Veuillez saisir une adresse exacte
+                            afin d'aider les voyageurs
+                            dans leurs recherches</p>
+
+                        <p>Les voyageurs doivent
+                            accepter le règlement
+                            intérieur avant de
+                            réserver.</p>
+
+
+                    </div>
+                    <div class="col-sm-7">
+
+                        <div class="contact-form-container">
+
+                            <h5>Modifier la propriete</h5>
+                            <form class="default-form" method="post">
+
+                                <!-- FORM VALIDATION ERROR MESSAGE : begin -->
+                                <p class="alert-message warning validation" style="display: none;"><i
+                                            class="ico fa fa-exclamation-circle"></i><strong>All fields are
+                                        required!</strong></p>
+                                <!-- FORM VALIDATION ERROR MESSAGE : end -->
+
+                                <!-- SENDING REQUEST ERROR MESSAGE : begin -->
+                                <p class="alert-message warning request" style="display: none;"><i
+                                            class="ico fa fa-exclamation-circle"></i><strong>Form not sent!</strong><br>There
+                                    was a connection problem. Try again later.</p>
+                                <!-- SENDING REQUEST ERROR MESSAGE : end -->
+                                {{ form_start(edit_form) }}
+
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+                                        <p>
+                                            {{ form_label(edit_form.categoriepropriete) }}
+
+                                            {{ form_widget(edit_form.categoriepropriete,{'attr' : {'id' : 'catprop','class' : 'select-box', 'placeholder' : 'categorie propriete'|trans}}) }}
+
+                                        </p>
+                                        <p>
+                                            {{ form_label(edit_form.ville) }}
+
+                                            {{ form_widget(edit_form.ville,{'attr' : {'id' : 'ville', 'placeholder' : 'ville'|trans}}) }}
+
+                                        </p>
+                                        <p>
+                                            {{ form_label(edit_form.rue) }}
+
+                                            {{ form_widget(edit_form.rue,{'attr' : {'id' : 'rue', 'placeholder' : 'rue'|trans}}) }}
+
+                                        </p>
+                                        <p>
+                                            {{ form_label(edit_form.prix) }}<br/>
+
+
+                                            {{ form_widget(edit_form.prix,{'attr' : {'id' : 'prix', 'placeholder' : 'prix'|trans}}) }}
+
+                                        </p>
+                                        <p>
+                                            {{ form_label(edit_form.nbrvoyageur) }}
+
+                                            {{ form_widget(edit_form.nbrvoyageur,{'attr' : {'id' : 'nbrvoyageur','class' : 'select-box', 'placeholder' : 'nombre de voyageur'|trans}}) }}
+
+                                        </p>
+
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p>
+
+                                            {{ form_label(edit_form.typepropriete) }}
+                                            {{ form_widget(edit_form.typepropriete,{'attr' : {'id' : 'typeprop','class' : 'select-box', 'placeholder' : 'type propriete'|trans}}) }}
+                                        </p>
+                                        <p>
+                                            {{ form_label(edit_form.pays) }}
+
+                                            {{ form_widget(edit_form.pays,{'attr' : {'id' : 'pays', 'placeholder' : 'pays'|trans}}) }}
+
+                                        </p>
+                                        <p>
+                                            {{ form_label(edit_form.titre) }}
+
+                                            {{ form_widget(edit_form.titre,{'attr' : {'id' : 'titre', 'placeholder' : 'titre'|trans}}) }}
+
+                                        </p>
+                                        <p>
+                                            {{ form_label(edit_form.nbrchambre) }}
+
+                                            {{ form_widget(edit_form.nbrchambre,{'attr' : {'id' : 'nbrchambre', 'placeholder' : 'nombre chambre'|trans}}) }}
+
+                                        </p>
+
+
+                                    </div>
+                                </div>
+
+                                    <div class="col-sm-6">
+
+
+                                    </div>
+
+
+                                <p>
+                                    {{ form_label(edit_form.description) }}
+
+                                    {{ form_widget(edit_form.description,{'attr' : {'id' : 'field_message', 'placeholder' : 'Description'|trans}}) }}
+                                    <br/>
+                                </p>
+                                {{ form_label(edit_form.fumeur) }}
+                                {{ form_widget(edit_form.fumeur) }}
+                                {{ form_label(edit_form.animaux) }}
+                                {{ form_widget(edit_form.animaux) }}
+                                {{ form_label(edit_form.alcool) }}
+                                {{ form_widget(edit_form.alcool) }}
+                                {{ form_label(edit_form.enfant) }}
+                                {{ form_widget(edit_form.enfant) }}
+
+
+                  </br>
+                                <div style="padding-left:300px;margin-top:-45px">
+
+                                    </br>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+
+                                    </div>
+                                    <div class="col-sm-6">
+
+                                        <p class="form-submit">
+
+                                            <input type="submit" value="Modifier" class="button submit-btn" />
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+                </div>
+                {{ form_rest(edit_form) }}
+                {{ form_end(edit_form) }}
+            </div>
+
+        </section>
+        <!-- CONTENT SECTION : end -->
+
+    </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,43 @@
+# app/config/security.yml
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: plaintext
+
+    role_hierarchy:
+        ROLE_CLIENT:      ROLE_USER
+        ROLE_AGENT:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                success_handler: redirect.after.login
+                #csrf_provider: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
+            oauth:
+                resource_owners:
+                    facebook:           "/connect/check-facebook"
+                login_path:        /evaluation/cnx
+                failure_path:      /connect
+
+                oauth_user_provider:
+                    service: hwi_oauth.user.provider.fosub_bridge
+
+            logout:       true
+            anonymous:    true
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/connect/, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/user/, role: ROLE_CLIENT }
+        - { path: ^/avis/evaluation, role: ROLE_CLIENT }
+
+

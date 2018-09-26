@@ -1,0 +1,71 @@
+{% extends "front.html.twig" %}
+
+{% block body %}
+    <section id="browse">
+        <div class="container">
+            <div class="tabs-container browse-tabs-container">
+                <div class="browse-inner">
+                    <div class="tabs-container browse-tabs-container">
+
+                        <ul class="custom-list tab-title-list">
+                            <li class="tab-title active"><a href="#featured-properties">Chambres</a></li>
+
+                        </ul>
+
+                        <ul class="custom-list tab-content-list browse-contents">
+                            <li class="tab-content active">
+                                {% for pt in proprietes %}
+                                <div class="row">
+
+
+                                    <div class="col-sm-4">
+                                        <div class="top-destination">
+                                            {% set lien = 'http://localhost/SprintWeb21/SprintWeb2/web/img/propriete/' ~ pt.url %}
+
+                                            <a href="{{ path('my_app_ahmed_voir_detail', {'id': pt.idP}) }}">   <img class="destination-thumb" src="{{ asset(lien) }}" alt=""></a>
+
+                                        </div>
+
+
+
+
+                                    </div>
+
+                                    <div class="col-sm-4">
+                                       <br/>
+                                        <h3>Prix Par Nuit </h3>
+
+                                            {{ pt.prix }}
+
+                                        </br>
+                                        <h3>Ville</h3>
+
+                                            {{ pt.vil }}
+
+
+
+                                    </div>
+
+                                </div>
+                              <hr>
+                              <br/>
+                                {% endfor %}
+
+                                </br>
+
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+{% endblock %}
+
+
+
+
+
+

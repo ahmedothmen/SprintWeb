@@ -1,0 +1,126 @@
+my_app_ahmed:
+    resource: "@MyAppAhmedBundle/Resources/config/routing.yml"
+    prefix:   /
+
+host_experience:
+    resource: "@HostExperienceBundle/Resources/config/routing.yml"
+    prefix:   /exp
+
+my_app_mail:
+    resource: "@MyAppMailBundle/Resources/config/routing.yml"
+    prefix:   /
+
+evaluation:
+    resource: "@evaluationBundle/Resources/config/routing.yml"
+    prefix:   /
+
+reclamation:
+    resource: "@ReclamationBundle/Resources/config/routing.yml"
+    prefix:   /reclamation
+
+chat:
+    resource: "@ChatBundle/Resources/config/routing.yml"
+    prefix:   /
+
+propriete_propriete:
+    resource: "@ProprieteBundle/Controller/ProprieteController.php"
+    type:     annotation
+
+propriete:
+    resource: "@ProprieteBundle/Resources/config/routing.yml"
+    prefix:   /prop
+
+message:
+    resource: "@MessageBundle/Resources/config/routing.yml"
+    prefix:   /msg
+
+my_app_user:
+    resource: "@MyAppUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+my_app_user_test:
+    path:     /
+    defaults: { _controller: MyAppUserBundle:Default:test }
+
+my_app_user_admin:
+    path:     /admin/
+    defaults: { _controller: MyAppUserBundle:Default:adminpage }
+
+my_app_user_client:
+    path:     /user/
+    defaults: { _controller: MyAppUserBundle:Default:clientpage  }
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+my_trash_route:
+    path: /moveTo
+    defaults: { _controller: MessageBundle:Message:moveTo }
+    options:
+        expose: false
+
+all_user_list:
+    path:     /userList
+    defaults: { _controller: MyAppUserBundle:User:showAll }
+
+favoris_add:
+    path:     /userList2
+    defaults: { _controller: MyAppUserBundle:User:addToFavoris }
+
+my_app_admin_profile:
+    path:     /profShow/{id}
+    defaults: { _controller: MyAppUserBundle:User:ProfileShow  }
+    methods:  [GET,POSt]
+
+my_app_pic_edit:
+    path:     /picedit
+    defaults: { _controller: MyAppUserBundle:User:picEdit  }
+    methods:  [GET,POSt]
+
+belousovr:
+    resource: "@belousovChatBundle/Controller"
+    type:     annotation
+
+admin_affichage:
+    path:     /admin/all
+    defaults: { _controller: "ReclamationBundle:Reclamation:afficherback" }
+    methods:  [GET, POST]
+
+admin_delete:
+    path:     /admin/delete{id}
+    defaults: { _controller: "ReclamationBundle:Reclamation:supprimerBack" }
+
+host_experience_chart1:
+    path:     /chart1
+    defaults: { _controller: "HostExperienceBundle:Graphe:chartLine" }
+
+host_experience_chart2:
+    path:     /chart2
+    defaults: { _controller: "HostExperienceBundle:Graphe:chartHistogramme" }
+
+host_experience_chart3:
+    path:     /chart3
+    defaults: { _controller: "HostExperienceBundle:Graphe:chartPie" }
+
+experience_page:
+    path:     /experience/
+    defaults: { _controller: MyAppUserBundle:Default:exp  }
+
+hwi_oauth_redirect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/redirect.xml"
+    prefix:   /connect
+
+hwi_oauth_connect:
+    resource: "@HWIOAuthBundle/Resources/config/routing/connect.xml"
+    prefix:   /connect
+
+hwi_oauth_login:
+    resource: "@HWIOAuthBundle/Resources/config/routing/login.xml"
+    prefix:   /connect

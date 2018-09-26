@@ -1,0 +1,37 @@
+
+<div id="jssor_2" style="position:relative;margin:0 auto;top:-110px;left:467px;border-radius: 5px 5px 5px 5px;width:210px;height:75px;overflow:hidden;visibility:hidden;background-color:#D40041;">
+    <!-- Loading Screen -->
+
+
+
+    <div data-u="slides" style="cursor:default;position:relative;top:0px;left:0px;width:600px;height:300px;overflow:hidden;">
+        </br>
+        </br>
+        {% for pt in proprietes %}
+        <div style="background-color: white">
+
+            <div data-u="thumb">
+                {% set lien = 'http://localhost/SprintWeb21/SprintWeb2/web/img/propriete/' ~ pt.url %}
+                <img class="i" src={{ asset(lien) }} />
+                <div class="t">{{ pt.titre }}</div>
+                <div class="c">cette chambre sera libere dans {{ pt.diff }} jours</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Thumbnail Navigator -->
+    <div data-u="thumbnavigator" class="jssort11" style="position:absolute;right:5px;top:0px;font-family:Arial, Helvetica, sans-serif;-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none;width:200px;height:300px;" data-autocenter="2">
+        <!-- Thumbnail Item Skin Begin -->
+        <div data-u="slides" style="cursor: default;">
+            <div data-u="prototype" class="p">
+                <div data-u="thumbnailtemplate" class="tp"></div>
+            </div>
+        </div>
+        <!-- Thumbnail Item Skin End -->
+    </div>
+    <!-- Arrow Navigator -->
+    <span data-u="arrowleft" class="jssora02l" style="top:0px;left:8px;width:55px;height:55px;" data-autocenter="2"></span>
+    <span data-u="arrowright" class="jssora02r" style="top:0px;right:218px;width:55px;height:55px;" data-autocenter="2"></span>
+</div>
+
+

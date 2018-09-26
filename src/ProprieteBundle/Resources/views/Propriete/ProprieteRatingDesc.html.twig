@@ -1,0 +1,332 @@
+{% extends "front.html.twig" %}
+{% block body %}
+    <!-- CORE : begin -->
+    <div id="core" class="page-search-results">
+
+        <!-- PAGE HEADER : begin -->
+        <div class="page-header has-nav">
+            <div class="container">
+                <div class="page-header-inner">
+
+                    <nav class="page-header-nav">
+                        <ul class="custom-list clearfix">
+                            <li><a href="{{ path('propriete_showMine')}}">Mes Proprietes</a></li>
+                            <li class="active"><a href="{{ path('propriete_showAll')}}">Tous les proprietes</a></li>
+                            <li><a href="{{ path('propriete_new')}}">Ajouter une propriete</a></li>
+                            <li><a href="{{ path('propriete_afficherFavoris')}}">Mes favoris</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="page-header">
+            <div class="container">
+                <div class="page-header-inner clearfix">
+                    <style>
+                        #red{color:red}
+                    </style>
+                    <h1 id="red" >Nombre de recherche : {{ nbrP }}</h1>
+                    <ul class="custom-list breadcrumbs">
+                        <li><a href="index.html">Home</a> / </li>
+                        <li><a href="properties-listing-grid.html">Search Results</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- PAGE HEADER : end -->
+
+        <!-- MAIN WRAPPER : begin -->
+        <div class="main-wrapper-container">
+            <div class="container">
+                <div id="main-wrapper">
+                    <div class="row">
+                        <div class="col-md-8 col-md-push-4">
+
+                            <!-- PROPERTIES LISTING : begin -->
+                            <div class="properties-listing">
+
+                                <!-- PROPERTIES LISTING HEADER : begin -->
+                                <div class="properties-listing-header clearfix">
+
+                                    <!-- LIST SORTING : begin -->
+                                    <div class="list-sorting">
+                                        <form class="default-form" action="index.html" method="post">
+                                            <h5>Sort By</h5>
+
+                                            <div style="margin-left:340px;margin-top:-65px">
+                                                <ul name="sort-price">
+                                                    <li value="asc" ><a href="{{ path('propriete_triRatingASC') }}" >Rating &uarr;</a></li>
+                                                    <li value="asc" ><a href="{{ path('propriete_triRatingDESC') }}" >Rating &darr;</a></li>
+                                                </ul>
+                                            </div>
+                                            <div style="margin-left:260px;margin-top:-65px">
+                                                <ul name="sort-price">
+                                                    <li value="asc" ><a href="{{ path('propriete_triAsc') }}" >Price &uarr;</a></li>
+                                                    <li value="asc" ><a href="{{ path('propriete_triDesc') }}" >Price &darr;</a></li>
+                                                </ul>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- LIST SORTING : end -->
+
+                                    <!-- LIST LAYOUT : begin -->
+                                    <div class="list-layout">
+                                        <button class="button" data-layout="grid"><i class="fa fa-th"></i></button>
+                                        <button class="button active" data-layout="list"><i class="fa fa-list-ul"></i></button>
+                                    </div>
+                                    <!-- LIST LAYOUT : end -->
+
+                                </div>
+                                <!-- PROPERTIES LISTING HEADER : end -->
+
+                                <!-- PROPERTY LIST : begin -->
+
+
+
+                                {% for propriete in proprietes %}
+                                    <ul class="custom-list clearfix property-list layout-list">
+
+                                        <!-- PROPERTY 1 : begin -->
+                                        <li class="property first-in-row odd">
+                                            <a href="{{ path('propriete_comment',{'id':propriete.idP})}}" class="property-thumb">
+                                                <img src="{{ asset('dummies/property1.jpg') }}" alt="">
+                                                <span class="overlay"><span><i class="fa fa-search"></i> View More</span></span>
+                                            </a>
+                                            <div class="property-content">
+                                                <h4 class="property-title"><a href="#">{{ propriete.titre }}</a></h4>
+                                                <h5 class="property-location">{{ propriete.pays }}</h5>
+                                                <p class="property-description">{{ propriete.description }}</p>
+                                                <ul class="custom-list property-icons">
+                                                    <li class="beds" title="beds"><i></i>{{ propriete.nbrChambre }}</li>
+                                                    <li class="people" title="people"><i></i>{{ propriete.nbrVoyageur }}</li>
+                                                </ul>
+                                                <div class="property-price-rating">
+                                                    <div class="property-price"><strong>{{ propriete.prix }} dinars</strong> / night</div></br>
+
+                                                </div>
+                                            </div>
+                                        </li>
+
+                                        <!-- PROPERTY 1 : end -->
+
+
+
+                                    </ul>
+                                {% endfor %}
+
+                                <!-- PROPERTY LIST : end -->
+
+                                <!-- PROPERTIES LISTING FOOTER : begin -->
+                                <div class="properties-listing-footer clearfix">
+                                    <div class="default-form">
+											<span class="select-box links">
+												<select name="listing-pagination">
+													<option value="properties-listing-grid.html?page=1">Page 1</option>
+													<option value="properties-listing-grid.html?page=2">Page 2</option>
+													<option value="properties-listing-grid.html?page=3">Page 3</option>
+													<option value="properties-listing-grid.html?page=4">Page 4</option>
+													<option value="properties-listing-grid.html?page=5">Page 5</option>
+													<option value="properties-listing-grid.html?page=6">Page 6</option>
+													<option value="properties-listing-grid.html?page=7">Page 7</option>
+													<option value="properties-listing-grid.html?page=8">Page 8</option>
+													<option value="properties-listing-grid.html?page=9">Page 9</option>
+													<option value="properties-listing-grid.html?page=10">Page 10</option>
+												</select>
+											</span>
+                                    </div>
+                                </div>
+                                <!-- PROPERTIES LISTING FOOTER : end -->
+
+                            </div>
+                            <!-- PROPERTIES LISTING : end -->
+
+                        </div>
+                        <div class="col-md-4 col-md-pull-8">
+
+                            <!-- PROPERTIES SEARCH : begin -->
+                            <aside class="properties-search">
+                                <h3 class="properties-search-title">Search &amp; Filter</h3>
+
+                                <!-- PROPERTIES SEARCH BASIC : begin -->
+                                <div class="properties-search-basic">
+
+                                    <!-- TYPE : begin -->
+                                    <p class="form-row textalign-center default-form properties-search-type">
+
+
+                                        <span class="radio-input">
+												<input id="filter_type_rent" type="radio" name="filter_type" value="rent" data-type="rent">
+												<label for="filter_type_rent">Rent</label>
+											</span>
+                                    </p>
+                                    <!-- TYPE : end -->
+
+                                    <!-- FORM SWAP : begin -->
+                                    <form class="default-form" action="index.html" id="properties-search-form-swap">
+
+                                        <!-- SEARCH INPUT : begin -->
+                                        <p class="search-input">
+                                            <input type="text" placeholder="Where do you want to rent?">
+                                        </p>
+                                        <!-- SEARCH INPUT : end -->
+
+                                        <!-- ARRIVAL DATE, DEPARTURE DATE : begin -->
+                                        <p class="form-row clearfix">
+												<span class="calendar-input input-left" title="Arrival">
+													<input type="text" name="arrival" placeholder="Arrival" data-dateformat="m/d/y">
+													<i class="fa fa-calendar"></i>
+												</span>
+                                            <span class="calendar-input input-right" title="Departure">
+													<input type="text" name="departure" placeholder="Departure" data-dateformat="m/d/y">
+													<i class="fa fa-calendar"></i>
+												</span>
+                                        </p>
+                                        <!-- ARRIVAL DATE, DEPARTURE DATE : end -->
+
+                                        <!-- NUMBER OF ADULTS AN CHILDREN : begin -->
+                                        <p class="form-row clearfix">
+												<span class="select-box input-left" title="Adults">
+													<select name="adults" data-placeholder="Adults">
+														<option>Adults</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+													</select>
+												</span>
+
+                                        </p>
+                                        <!-- NUMBER OF ADULTS AN CHILDREN : end -->
+
+                                        <p class="form-row">
+                                            <button class="button submit-btn"><i class="fa fa-search"></i> Search</button>
+                                        </p>
+
+                                    </form>
+                                    <!-- FORM SWAP : begin -->
+
+                                    <!-- FORM BOOK : begin -->
+                                    <form class="default-form" action="index.html" id="properties-search-form-book" style="display: none;">
+
+                                        <!-- SEARCH INPUT : begin -->
+                                        <p class="search-input">
+                                            <input type="text" placeholder="Where do you want to book?">
+                                        </p>
+                                        <!-- SEARCH INPUT : end -->
+
+                                        <!-- ARRIVAL DATE, DEPARTURE DATE : begin -->
+                                        <p class="form-row clearfix">
+												<span class="calendar-input input-left" title="Arrival">
+													<input type="text" name="arrival" placeholder="Arrival" data-dateformat="m/d/y">
+													<i class="fa fa-calendar"></i>
+												</span>
+                                            <span class="calendar-input input-right" title="Departure">
+													<input type="text" name="departure" placeholder="Departure" data-dateformat="m/d/y">
+													<i class="fa fa-calendar"></i>
+												</span>
+                                        </p>
+                                        <!-- ARRIVAL DATE, DEPARTURE DATE : end -->
+
+                                        <!-- NUMBER OF ADULTS AN CHILDREN : begin -->
+                                        <p class="form-row clearfix">
+												<span class="select-box input-left" title="Adults">
+													<select name="adults" data-placeholder="Adults">
+														<option>Adults</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+													</select>
+												</span>
+                                            <span class="select-box input-right" title="Children">
+													<select name="children" data-placeholder="Children">
+														<option>Children</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+													</select>
+												</span>
+                                        </p>
+                                        <!-- NUMBER OF ADULTS AN CHILDREN : end -->
+
+                                        <p class="form-row">
+                                            <button class="button submit-btn"><i class="fa fa-search"></i> Search</button>
+                                        </p>
+
+                                    </form>
+                                    <!-- FORM BOOK : begin -->
+
+                                    <!-- FORM RENT : begin -->
+                                    <form class="default-form" action="index.html" id="properties-search-form-rent" style="display: none;">
+
+                                        <!-- SEARCH INPUT : begin -->
+                                        <p class="search-input">
+                                            <input type="text" placeholder="Where do you want to rent?">
+                                        </p>
+                                        <!-- SEARCH INPUT : end -->
+
+                                        <!-- ARRIVAL DATE, DEPARTURE DATE : begin -->
+                                        <p class="form-row clearfix">
+												<span class="calendar-input input-left" title="Arrival">
+													<input type="text" name="arrival" placeholder="Arrival" data-dateformat="m/d/y">
+													<i class="fa fa-calendar"></i>
+												</span>
+                                            <span class="calendar-input input-right" title="Departure">
+													<input type="text" name="departure" placeholder="Departure" data-dateformat="m/d/y">
+													<i class="fa fa-calendar"></i>
+												</span>
+                                        </p>
+                                        <!-- ARRIVAL DATE, DEPARTURE DATE : end -->
+
+                                        <!-- NUMBER OF ADULTS AN CHILDREN : begin -->
+                                        <p class="form-row clearfix">
+												<span class="select-box input-left" title="Adults">
+													<select name="adults" data-placeholder="Adults">
+														<option>Adults</option>
+														<option value="1">1</option>
+														<option value="2">2</option>
+														<option value="3">3</option>
+														<option value="4">4</option>
+														<option value="5">5</option>
+													</select>
+												</span>
+
+                                        </p>
+                                        <!-- NUMBER OF ADULTS AN CHILDREN : end -->
+
+                                        <p class="form-row">
+                                            <button class="button submit-btn"><i class="fa fa-search"></i> Search</button>
+                                        </p>
+
+                                    </form>
+                                    <!-- FORM RENT : begin -->
+
+                                </div>
+                                <!-- PROPERTIES SEARCH BASIC : end -->
+
+                                <hr class="form-divider">
+
+
+                                </form>
+
+                                <!-- PROPERTIES SEARCH FILTER : end -->
+
+                            </aside>
+                            <!-- PROPERTIES SEARCH : end -->
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- MAIN WRAPPER : end -->
+
+    </div>
+    <!-- CORE : end -->
+
+
+{% endblock %}

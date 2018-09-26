@@ -1,0 +1,73 @@
+{% extends "front.html.twig" %}
+
+{% block body %}
+    </br>
+
+    <section id="browse">
+
+        <div class="container">
+        <div class="tabs-container browse-tabs-container">
+        <div class="browse-inner">
+            <div class="tabs-container browse-tabs-container">
+
+                <div > <p style="font-size:20px;color:red;font-style:italic;box-shadow: #0b0b0b"> {{ message }}</p> </div>
+               <br>
+                <ul class="custom-list tab-title-list">
+                    <li class="tab-title active"><a href="#featured-properties">Mes Reservations</a></li>
+
+                </ul>
+                <ul class="custom-list tab-content-list browse-contents">
+                    <li class="tab-content active">
+
+                        <div class="row">
+
+                            <table border="1">
+
+                                <thead>
+                                <tr>
+
+                                    <th>ville</th>
+                                    <th>prix</th>
+                                    <th>titre</th>
+                                    <th>arrivee</th>
+                                    <th>depart</th>
+                                    <th>annuler</th>
+                                </tr>
+                                </thead>
+
+
+                                <tbody>
+                                {% for pt in proprietes %}
+                                    <tr>
+                                        <td>{{ pt.vil }}</td>
+                                        <td>{{ pt.prix  }}</td>
+
+                                        <td>{{ pt.tit }}</td>
+                                        <td>{{ pt.dtD |date('Y-m-d') }}</td>
+                                        <td>{{ pt.dtF |date('Y-m-d') }}</td>
+
+
+
+                                        <td> <a href="{{ path('my_app_ahmed_annuler_reservation', {'id': pt.id_r}) }} " onclick="valider();" class="button"><i class="fa fa-list-ul"></i> annuler </a></td>
+
+
+                                    </tr>
+
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+
+                        </div>
+
+                    </li>
+
+                </ul>
+    </div>
+    </div>
+    </div>
+    </div>
+</section>
+    {% endblock %}
+
+

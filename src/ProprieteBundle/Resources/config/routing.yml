@@ -1,0 +1,77 @@
+propriete_homepage:
+    path:     /
+    defaults: { _controller: ProprieteBundle:Default:index }
+propriete_showAll:
+    path:     /showAll
+    defaults: { _controller: "ProprieteBundle:Propriete:showAll" }
+    methods:  GET
+propriete_show:
+    path:     /{id}/show
+    defaults: { _controller: "ProprieteBundle:Propriete:show" }
+propriete_showMine:
+    path:     /showMine
+    defaults: { _controller: "ProprieteBundle:Propriete:getProp" }
+
+propriete_new:
+    path:     /new
+    defaults: { _controller: "ProprieteBundle:Propriete:new" }
+    methods:  [GET, POST]
+propriete_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ProprieteBundle:Propriete:edit" }
+    methods:  [GET, POST]
+propriete_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ProprieteBundle:Propriete:delete" }
+
+propriete_comment:
+    path:      /{id}/comment
+    defaults: { _controller: "ProprieteBundle:Commentaire:add" }
+
+propriete_commentEdit:
+    path:      /{id}/editCom
+    defaults: { _controller: "ProprieteBundle:Commentaire:modifier" }
+propriete_commentDelete:
+    path:      /{id}/deleteCom
+    defaults: { _controller: "ProprieteBundle:Commentaire:supprimer" }
+propriete_afficher_back:
+    path:      /admin/afficher
+    defaults: { _controller: "ProprieteBundle:Propriete:afficherBack" }
+propriete_supprimer_back:
+    path:      /admin/{id}/supprimer
+    defaults: { _controller: "ProprieteBundle:Propriete:supprimerBack" }
+propriete_commentAfficher_back:
+    path:      /admin/afficherC
+    defaults: { _controller: "ProprieteBundle:Commentaire:afficherBack" }
+propriete_triDesc:
+    path:      /triDesc
+    defaults: { _controller: "ProprieteBundle:Propriete:proprieteTriDesc" }
+
+propriete_triRatingASC:
+    path:      /triRatingASC
+    defaults: { _controller: "ProprieteBundle:Propriete:proprietetriRatingASC" }
+propriete_triRatingDESC:
+    path:      /triRatingDesc
+    defaults: { _controller: "ProprieteBundle:Propriete:proprietetriRatingDesc" }
+propriete_afficherFavoris:
+    path:      /afficherFavoris
+    defaults: { _controller: "ProprieteBundle:Commentaire:afficherFavoris" }
+
+
+propriete_triAsc:
+    path:      /triAsc
+    defaults: { _controller: "ProprieteBundle:Propriete:proprieteTriAsc" }
+propriete_commentDelete_back:
+    path:      /admin/{id}/supprimer1
+    defaults: { _controller: "ProprieteBundle:Commentaire:supprimerBack" }
+propriete_versAjouterImage:
+    path:     /{id}/versAjouterImage
+    defaults: { _controller: "ProprieteBundle:Image:versAjouterImage" }
+    methods:  [GET, POST]
+propriete_addFavoris:
+    path:     /{id}/addFavoris
+    defaults: { _controller: "ProprieteBundle:Commentaire:ajouterFavoris" }
+    methods:  [GET, POST]
+propriete_deleteFavoris:
+    path:     /{id}/deleteFavoris
+    defaults: { _controller: "ProprieteBundle:Commentaire:supprimerFavoris" }

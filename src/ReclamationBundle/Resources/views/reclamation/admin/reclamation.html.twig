@@ -1,0 +1,105 @@
+{% extends 'back.html.twig' %}
+
+{% block body %}
+
+
+    <div class="prtm-content-wrapper">
+        <div class="prtm-content">
+
+            <div class="data-table-style">
+
+                <div class="prtm-block pos-relative">
+                    <div class="prtm-block-title mrgn-b-lg">
+                        <div class="caption">
+                            <h3 class="text-capitalize">Liste des reclamations </h3>
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+                    <div class="prtm-block-content">
+                        <div class="dataTables_wrapper">
+
+                            <div class="table-responsive">
+                                <div class="count">
+                                    <h3>Nombre de réclamation est :  {{ reclamations.getTotalItemCount }}</h3>
+
+                                </div>
+                                <table class="table table-hover dataTable" data-table="table-button" data-buttons="['excel', 'pdf']">
+                                    <thead>
+                                    <tr>
+                                        <th> </th>
+                                        <th>id</th>
+                                        <th>nom user</th>
+                                        <th>prenom user</th>
+                                        <th>contenu</th>
+                                        <th>type</th>
+                                        <th>Date</th>
+                                        <th>Action </th>
+
+                                    </tr>
+                                    </thead>
+                                    {% set counter = 0 %}
+                                    {% for reclamation in reclamations %}
+                                        <tbody>
+                                         {%if reclamation.etat == 0%}
+                                        <tr class="danger">
+                                           {%   elseif reclamation.etat == 1%}
+                                        <tr class="success">
+                                            {%endif %}
+                                             {%   if reclamation.etat == 1%}
+                                             {% set counter = counter + 1 %}
+
+                                             {%endif %}
+
+                                             <td>
+
+                                               </td>
+                                            <td> {{ reclamation.id}}</td>
+                                            <td> {{ reclamation.nom }}</td>
+                                            <td> {{ reclamation.prenom }} </td>
+                                            <td> {{ reclamation.contenu }}</td>
+                                            <td> {{ reclamation.type }}</td>
+                                            <td> {{ reclamation.date|date('Y-m-d H:i:s')}}</td>
+                                            <td>
+
+                                                <a href="{{ path('my_app_mail_homepage',{id:reclamation.id}) }}" onclick="return confirm('Etes vous sur de vouloir traiter cette reclmation ?')">
+                                                    <i i class="fa fa-cog fa-lg base-dark" aria-hidden="true"></i></a>
+                                                <a href="{{ path('admin_delete',{id:reclamation.id}) }}" onclick= " return confirm('Etes vous sur de vouloir archiver cette reclmation ?')">
+                                                    <i class="fa fa-times fa-lg text-danger" aria-hidden="true"></i></a>
+
+                                           </td>
+                                        </tr>
+                                        </tbody>
+
+                                    {% endfor %}
+
+                                </table>
+                                <div class="navigation">
+                                    <br> <h3>Nombre de réclamation traitée est :   {{ counter }}</h3>
+                                    {{ knp_pagination_render(reclamations) }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer-wrapper">
+            <div class="prtm-footer clearfix">
+                <div class="row footer-area pad-lr-md">
+                    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                        <p>Copyright 2017 Pratham Admin Theme | All Rights Reserved | Made With Love In India By The IRON Network</p>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4 text-right">
+                        <a href="index-2.html"><img src="assets/img/footer-logo.png" width="218" height="23" alt="footer logo"></a>
+                    </div>
+                </div>
+            </div>
+            <a href="#" id="back-top" class="to-top scrolled"> <span class="to-top-icon"></span> </a>
+        </footer>
+    </div>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "back.html.twig" %}
+{% set role1 = 'Admin' %}
+{% set role2 = 'Client' %}
+{% block body  %}
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+
+
+<div class="prtm-wrapper">
+    <div class="prtm-main">
+        <div class="prtm-content-wrapper">
+            <div class="prtm-content">
+                <div class="prtm-page-bar">
+                    <ul class="breadcrumb">
+                        <li class="breadcrumb-item text-capitalize">
+                            <h3>Users List</h3> </li>
+                        <li class="breadcrumb-item"><a href="{{ path('all_user_list') }}" >Users</a></li>
+                        <li class="breadcrumb-item"><a href="{{ path('favoris_show') }}" class="active">Favoris</a></li>
+                    </ul>
+                </div>
+                <div class="prtm-users-listing clearfix">
+                    <div class="row">
+                        {% for user in users %}
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                            <div class="prtm-block fw-light">
+                                <div class="clearfix">
+                                    <div class="thumb-wid pull-left mrgn-r-md"> <img class="img-responsive img-circle" src="{{ asset('img/users/' ~ user.imageName )}}" width="107" height="107" alt="user list image"> </div>
+                                    <div class="thumb-content pull-left">
+                                        {% if user.roles[0]=='ROLE_SUPER_ADMIN' %}
+                                        <h6 class="fw-bold base-dark">{{ user.prenom }} {{ user.nom }} <span class="label label-xs label-primary">{{ role1 }}</span></h6>
+                                        {% else %}
+                                        <h6 class="fw-bold base-dark">{{ user.prenom }} {{ user.nom }} <span class="label label-xs label-success">{{ role2 }}</span></h6>
+                                        {% endif %}
+                                        <p><span><i class="fa fa-map-marker mrgn-r-xs" aria-hidden="true"></i></span>Last Login: {{ user.lastLogin|date("d/m/y h:m:s") }}</p>
+                                        <p><span><i class="fa fa-black-tie mrgn-r-xs" aria-hidden="true"></i></span> {{ user.email }}</p>
+                                        <a type="submit" id="send{{ user.id }}" name="send" class="btn btn-xs btn-outline-primary font-xs mrgn-b-xs">Send Message</a>
+                                        <script>$(document).ready(function () {
+                                                $('#send{{ user.id }}').click(function () {
+                                                    var id = {{ user.id }};
+                                                    $.ajax({
+                                                        url: "msg/newM/"+id,
+                                                        type: "GET",
+                                                        data: { "idr" : id },
+                                                        success: function () {
+                                                            $(location).attr('href', 'http://localhost/SprintWeb2/SprintWeb2/web/app_dev.php/msg/newM/'+id);
+                                                        }
+                                                    });
+
+                                                });
+                                            });</script>
+
+                                        <a type="submit" id="add{{ user.id }}" name="add" class="btn btn-xs btn-outline-success font-xs mrgn-b-xs add">Add To Favourite</a>
+                                        <script>$(document).ready(function () {
+                                                $('#add{{ user.id }}').click(function () {
+                                                    var clickBtnValue = $(this).prop('name');
+                                                    var id = {{ user.id }};
+                                                    var ajaxurl = 'userList2',
+                                                        data = {'action': clickBtnValue, 'idFavoris': id};
+                                                    $.get(ajaxurl, data, function (response) {
+                                                        console.log(response)
+                                                        $(location).attr('href', 'http://localhost/SprintWeb2/SprintWeb2/web/app_dev.php/msg/favoris');
+                                                    });
+                                                });
+                                            });</script>
+
+                                        <a type="submit" href="{{ path('my_app_admin_profile', { 'id': user.id }) }}" id="show{{ user.id }}" name="show" class="btn btn-xs btn-outline-success font-xs mrgn-b-xs ">Show Profile</a>
+                                        <script>$(document).ready(function () {
+                                                $('#show{{ user.id }}').click(function () {
+                                                    var clickBtnValue = $(this).prop('name');
+                                                    var id={{ user.id }};
+                                                    var ajaxurl = 'profShow',
+                                                        data = {'action': clickBtnValue, 'idu': id};
+                                                    $.get(ajaxurl, data, function (response) {
+                                                        console.log(response);
+
+                                                    });
+                                                });
+                                            });</script>
+                                    </div>
+                                    <div class="action-links">
+                                        <ul class="list-inline">
+                                            <li> <a class="text-success" href="javascript:;"><i class="fa fa-star" aria-hidden="true"></i></a> </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

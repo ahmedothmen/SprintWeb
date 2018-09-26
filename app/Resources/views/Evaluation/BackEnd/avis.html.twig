@@ -1,0 +1,67 @@
+{% extends 'back.html.twig' %}
+
+{% block body %}
+    {% for flash_message in app.session.flashbag.get('notice') %}
+        <div class="alert alert-success"><center>{{ flash_message }}</center></div>
+    {% endfor %}
+    <div class="data-table-style">
+    <div class="prtm-block pos-relative">
+    <div class="prtm-block-title mrgn-b-lg">
+        <div class="caption">
+        <center><h3 class="text-capitalize">Liste des avis</h3></center>
+        </div>
+        <div class="contextual-link">
+            <div class="dropdown display-ib">
+                <a href="javascript:;" class="mrgn-l-xs" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false"><i class="fa fa-cog fa-lg base-dark"></i></a>
+                <ul class="dropdown-menu dropdown-arrow dropdown-menu-right">
+                    <li>
+                        <a href="javascript:;"> <i class="fa fa-eye"></i> <span class="mrgn-l-sm">View</span> </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;"> <i class="fa fa-pencil"></i> <span class="mrgn-l-sm">Edit </span> </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;"> <i class="fa fa-trash-o"></i> <span class="mrgn-l-sm">Delete</span> </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="prtm-content-wrapper loaded-block">
+        <div class="prtm-content">
+            <div class="dataTables_wrapper">
+                <div class="table-responsive">
+                    Moyenne des notes  {{ moy|rating }}
+
+                    <h4><b>{{ evaluations.getTotalItemCount }} avis / vote(s) sur cette experience.</b></h4>
+
+            <table class="table table-hover dataTable" data-table="table-button" >
+        <thead>
+        <tr>
+            <th>Utilisateur</th>
+            <th>Avis</th>
+            <th>{{ knp_pagination_sortable(evaluations,'Rating'|trans,'evaluation.rating') }}</th>
+            <th>Date</th>
+            <th>Heure</th>
+            <th>Supp.</th>
+        </tr>
+        </thead>
+        {% for evaluation in evaluations %}
+            <tr>
+                <td>{{ evaluation.user.nom }}</td>
+                <td>{{ evaluation.avis }}</td>
+                <td>{{ evaluation.rating|rating }}</td>
+                <td>{{ evaluation.date|date('Y-m-d') }}</td>
+                <td>{{ evaluation.time|date('H:i:s') }}</td>
+                <td>
+                    <a class="btn btn-danger" href="{{ path('avis_supprimer_back',{id:evaluation.id})}}" onclick="return confirm('etes vous sur de vouloir supprimer cet avis ?')"><i class="fa fa-trash-o"></i></a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+                    <div class="navigation">{{ knp_pagination_render(evaluations) }}</div>
+                </div>
+            </div>
+        </div>
+    </div></div></div>
+{% endblock body %}

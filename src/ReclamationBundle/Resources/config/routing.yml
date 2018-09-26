@@ -1,0 +1,25 @@
+reclamation_new:
+    path:     /new/{id}
+    defaults: { _controller: ReclamationBundle:Reclamation:new }
+    methods: [GET, POST]
+
+reclamation_index:
+    path:     /
+    defaults: { _controller: "ReclamationBundle:Reclamation:index" }
+    methods:  GET
+
+reclamation_show:
+    path:     /{id}/show
+    defaults: { _controller: "ReclamationBundle:Reclamation:show" }
+    methods:  GET
+
+reclamation_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "ReclamationBundle:Reclamation:edit" }
+    methods:  [GET, POST]
+
+reclamation_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "ReclamationBundle:Reclamation:delete" }
+    methods:  DELETE
+

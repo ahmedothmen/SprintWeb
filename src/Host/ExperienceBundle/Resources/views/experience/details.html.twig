@@ -1,0 +1,228 @@
+{% extends "front.html.twig" %}
+{% block body %}
+<!-- HEADER : begin -->
+
+            <!-- HEADER BRANDING : end -->
+
+            <!-- HEADER NAVBAR : begin -->
+
+                <!-- HEADER SEARCH : end -->
+
+                <!-- HEADER MENU : begin -->
+
+                <!-- HEADER MENU : end -->
+
+                <!-- HEADER TOOLS : begin -->
+
+                    <!-- HEADER LANGUAGE : end -->
+
+                    <!-- HEADER REGISTER : begin -->
+
+                    <!-- HEADER REGISTER : end -->
+
+                    <!-- HEADER LOGIN : begin -->
+
+                    <!-- HEADER LOGIN : end -->
+
+                    <!-- HEADER ADD OFFER : begin -->
+
+                    <!-- HEADER ADD OFFER : end -->
+
+                </div>
+                <!-- HEADER TOOLS : end -->
+
+            </div>
+            <!-- HEADER NAVBAR : end -->
+
+            <!-- SEARCH TOGGLE : begin -->
+            <button class="search-toggle button"><i class="fa fa-search"></i></button>
+            <!-- SEARCH TOGGLE : end -->
+
+            <!-- NAVBAR TOGGLE : begin -->
+            <button class="navbar-toggle button"><i class="fa fa-bars"></i></button>
+            <!-- NAVBAR TOGGLE : end -->
+
+        </div>
+    </div>
+</header>
+<!-- HEADER : end -->
+
+<!-- CORE : begin -->
+<div id="core" class="page-property-details">
+
+    <!-- PAGE HEADER : begin -->
+    <div class="page-header">
+        <div class="container">
+            <div class="page-header-inner clearfix">
+                <h1>{{ ex.getNomXp() }}</h1>
+
+            </div>
+        </div>
+    </div>
+    <!-- PAGE HEADER : end -->
+
+    <!-- MAIN WRAPPER : begin -->
+    <div class="main-wrapper-container">
+        <div class="container">
+            <div id="main-wrapper">
+                <div class="row">
+                    <div class="col-md-8 col-md-push-4">
+
+                        <!-- PROPERTY DETAILS : begin -->
+                        <div class="property-details">
+
+                            <!-- PROPERTY IMAGES : begin -->
+                            <div class="property-images">
+                                <div class="image-list">
+                                    <div class="image"><img name="{{ ex.getIdXp() }}" src="{{ asset('images/products/' ~ ex.imageName )}}"></div>
+
+                                </div>
+                                <div class="images-footer">
+                                    <div class="images-footer-inner">
+                                        <div class="image-description"></div>
+                                        <div class="image-counter"></div>
+                                    </div>
+                                    <button class="prev-btn"><i class="fa fa-chevron-left"></i></button>
+                                    <button class="next-btn"><i class="fa fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                            <!-- PROPERTY IMAGES : end -->
+
+
+                            <div class="row">
+                                <div class="col-md-8">
+
+                                    <!-- PROPERTY DESCRIPTION : begin -->
+                                    <div class="property-description">
+
+                                        <!-- DESCRIPTION TEXT : begin -->
+                                        <div class="description-text">
+                                            <h4>Object Description</h4>
+                                          <p> {{ ex.getDescription() }}</p>
+                                        </div>
+                                        <!-- DESCRIPTION TEXT : end -->
+
+                                        <!-- TABS : begin -->
+                                        <div class="tabs-container">
+                                            <ul class="tab-title-list">
+                                                <li class="tab-title active"><a href="#information">Information</a></li>
+                                            </ul>
+                                            <ul class="tab-content-list">
+
+                                                <!-- INFORMATION TAB : begin -->
+                                                <div class="tab-content active" id="information">
+
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <table>
+                                                                <tr>
+                                                                    <td>Date arrivé</td>
+
+                                                                    <td class="textalign-right"><p> {{ ex.getArrival()|date("m/d/Y") }}</p></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Date départ</td>
+                                                                    <td class="textalign-right"><p> {{ ex.getDeparture()|date("m/d/Y") }}</p></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Nom de l'experience</td>
+                                                                    <td class="textalign-right"><p> {{ ex.getNomXp() }}</p></td>
+                                                                </tr>
+
+
+
+
+                                                                <tr>
+                                                                    <td>Nom de l'Host</td>
+                                                                    <td class="textalign-right">{{ app.user }}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Type de l'experience</td>
+                                                                  <td>  <p class="textalign-right"></p> {{ ex.getType() }} </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Nombre de participants</td>
+                                                                    <td class="textalign-right"><p> {{ ex.getParticipants() }}</p></td>
+                                                                </tr>
+
+
+                                                    </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                </li>
+                                                <!-- INFORMATION TAB : end -->
+
+                                                <!-- COMMENTS TAB : begin -->
+                                                <li class="tab-content">
+
+
+
+                                                </li>
+                                                <!-- COMMENTS TAB : end -->
+
+                                            </ul>
+                                        </div>
+                                        <!-- TABS : end -->
+
+                                    </div>
+                                    <!-- PROPERTY DESCRIPTION : end -->
+
+                                </div>
+                                <div class="col-md-4">
+
+                                    <!-- PROPERTY PANEL : begin -->
+                                    <div class="property-panel">
+
+                                        <!-- OBJECT PRICE : begin -->
+                                        <div class="panel-item object-price">
+                                            <h4 class="panel-item-title">Prix</h4>
+                                            <p class="price"><strong>{{ ex.getPrixXp() }}DT</strong></p>
+                                        </div>
+                                        <!-- OBJECT PRICE : end -->
+
+                                        <!-- OBJECT RATING : begin -->
+                                        <div class="panel-item object-rating">
+                                            <h4 class="panel-item-title">Note</h4>
+                                            <p class="rating"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i></p>
+                                        </div>
+                                        <!-- OBJECT RATING : end -->
+
+                                        <!-- BOOK FORM : begin -->
+                                        <div class="panel-item book-form">
+
+
+
+                                                <p class="form-row">
+
+
+                                                    <a href="{{ path('avis_ajouter',{ 'IdXp': ex.getIdXp()  })}}" class="button">Evaluer</a>
+                                                </p>
+
+                                            </form>
+                                        </div>
+                                        <!-- BOOK FORM : end -->
+
+                                    </div>
+                                    <!-- PROPERTY PANEL : end -->
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- PROPERTY DETAILS : end -->
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- MAIN WRAPPER : end -->
+
+</div>
+<!-- CORE : end -->
+
+<!-- BOTTOM PANEL : begin -->
+
+{% endblock %}

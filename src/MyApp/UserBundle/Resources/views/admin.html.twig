@@ -1,0 +1,391 @@
+{% extends "back.html.twig" %}
+
+{% block body %}
+
+    <body class="">
+    <div class="prtm-wrapper">
+        <div class="prtm-main">
+            <div class="prtm-content-wrapper">
+                <div class="prtm-content">
+                    <div class="row font-lg">
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+                            <div class="prtm-card-box bold-border-primary mrgn-b-lg overflow-wrapper">
+                                <div class="pad-all-md clearfix"> <span class="pull-left">New Users</span> <span class="pull-right count-item" data-count="9123">0</span> </div>
+                                <div data-chart="sparkline" data-type="line" data-values="[2,5,6,7,9,9,5,6,5,7,4,6,7,2]" data-width="100%" data-height="50" data-linecolor="#5e6db3" data-linewidth="3" data-fillcolor="#bfc5e1" data-minSpotColor="undefined"></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+                            <div class="prtm-card-box bold-border-success mrgn-b-lg overflow-wrapper">
+                                <div class="pad-all-md clearfix"> <span class="pull-left">Invited Users</span> <span class="pull-right count-item" data-count="1973">0</span> </div>
+                                <div data-chart="sparkline" data-type="line" data-values="[2,5,6,7,9,9,5,6,5,7,4,6,7,2]" data-width="100%" data-height="50" data-linecolor="#00ca95" data-linewidth="3" data-fillcolor="#99ead5"></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+                            <div class="prtm-card-box bold-border-info mrgn-b-lg overflow-wrapper">
+                                <div class="pad-all-md clearfix"> <span class="pull-left">Referral Users</span> <span class="pull-right count-item" data-count="4523">0</span> </div>
+                                <div data-chart="sparkline" data-type="line" data-values="[2,5,6,7,9,9,5,6,5,7,4,6,7,2]" data-width="100%" data-height="50" data-linecolor="#31cff9" data-linewidth="3" data-fillcolor="#adecfd"></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-3">
+                            <div class="prtm-card-box bold-border-secondary mrgn-b-lg overflow-wrapper">
+                                <div class="pad-all-md clearfix"> <span class="pull-left">Total Users</span> <span class="pull-right count-item" data-count="8756">0</span> </div>
+                                <div data-chart="sparkline" data-type="line" data-values="[2,5,6,7,9,9,5,6,5,7,4,6,7,2]" data-width="100%" data-height="50" data-linecolor="#fd7b6c" data-linewidth="3" data-fillcolor="#fecac4"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-8">
+                            <div class="prtm-block">
+                                <div class="prtm-block-title mrgn-b-lg">
+                                    <div class="caption">
+                                        <h3>Traffic &amp; sales</h3> </div>
+                                </div>
+                                <div id="dashboard3-amchart" class="amcharts"></div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4">
+                            <div class="prtm-block">
+                                <div class="prtm-block-title mrgn-b-lg">
+                                    <div class="caption">
+                                        <h3 class="mrgn-all-none">Other Statistics</h3> </div>
+                                    <div class="contextual-link">
+                                        <div class="dropdown display-ib"> <a href="javascript:;" class="mrgn-l-xs" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="true"><i class="fa fa-cog fa-lg base-dark"></i></a>
+                                            <ul class="dropdown-menu dropdown-arrow dropdown-menu-right">
+                                                <li>
+                                                    <a href="javascript:;"> <i class="fa fa-eye"></i> <span class="mrgn-l-sm">View</span> </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;"> <i class="fa fa-pencil"></i> <span class="mrgn-l-sm">Edit </span> </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;"> <i class="fa fa-trash-o"></i> <span class="mrgn-l-sm">Delete</span> </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="prtm-block-content">
+                                    <ul class="list-unstyled">
+                                        <li>
+                                            <p class="clearfix"><span class="pull-left"><i class="fa fa-male fa-lg mrgn-r-md"></i> <span class="display-ib">Male</span></span><span class="pull-right">43%</span></p>
+                                            <div class="progress progress-sm-height">
+                                                <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="43" aria-valuemin="0" aria-valuemax="100" data-width="43%"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <p class="clearfix"><span class="pull-left"><i class="fa fa-female fa-lg mrgn-r-md"></i> <span class="display-ib">Female</span></span><span class="pull-right">23%</span></p>
+                                            <div class="progress progress-sm-height">
+                                                <div class="progress-bar progress-bar-secondary" role="progressbar" aria-valuenow="23" aria-valuemin="0" aria-valuemax="100" data-width="23%"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <p class="clearfix"><span class="pull-left"><i class="fa fa-globe fa-lg mrgn-r-md"></i> <span class="display-ib">Organic Search</span></span><span class="pull-right">68%</span></p>
+                                            <div class="progress progress-sm-height">
+                                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="68" aria-valuemin="0" aria-valuemax="100" data-width="68%"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <p class="clearfix"><span class="pull-left"><i class="fa fa-facebook fa-lg mrgn-r-md"></i> <span class="display-ib">Facebook</span></span><span class="pull-right">88%</span></p>
+                                            <div class="progress progress-sm-height">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" data-width="88%"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <p class="clearfix"><span class="pull-left"><i class="fa fa-twitter fa-lg mrgn-r-md"></i> <span class="display-ib">Twitter</span></span><span class="pull-right">74%</span></p>
+                                            <div class="progress progress-sm-height">
+                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="74" aria-valuemin="0" aria-valuemax="100" data-width="74%"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <p class="clearfix"><span class="pull-left"><i class="fa fa-linkedin fa-lg mrgn-r-md"></i> <span class="display-ib">Linkedin</span></span><span class="pull-right">58%</span></p>
+                                            <div class="progress progress-sm-height">
+                                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="58" aria-valuemin="0" aria-valuemax="100" data-width="58%"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <p class="clearfix"><span class="pull-left"><i class="fa fa-google fa-lg mrgn-r-md"></i> <span class="display-ib">Google</span></span><span class="pull-right">70%</span></p>
+                                            <div class="progress progress-sm-height">
+                                                <div class="progress-bar progress-bar-secondary" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" data-width="70%"></div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <p class="clearfix"><span class="pull-left"><i class="fa fa-pinterest fa-lg mrgn-r-md"></i> <span class="display-ib">Pinterest</span></span><span class="pull-right">80%</span></p>
+                                            <div class="progress progress-sm-height">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" data-width="80%"></div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 font-lg base-reverse fw-light full-col-lg-md">
+                            <div class="row icons-as-bg">
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="bg-primary mrgn-b-lg fa-facebook prtm-card-box">
+                                        <div class="row pad-all-lg">
+                                            <div class="col-xs-5 col-sm-2 col-md-5 col-lg-5">
+                                                <div class="overflow-wrapper" data-barcolor="#ffffff" data-height="70" data-barwidth="7" data-barspacing="5" data-values="[15, 18, 14, 17, 19, 17, 20, 17,10]" data-type="bar" data-chart="sparkline"> </div>
+                                            </div>
+                                            <div class="col-xs-7 col-sm-9 col-md-7 col-lg-7"> <span class="count-item" data-count="63">0</span><span>K Friends</span> <span class="show"><span class="count-item" data-count="875">0</span> Followers</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="bg-info mrgn-b-lg fa-twitter prtm-card-box">
+                                        <div class="row pad-all-lg">
+                                            <div class="col-xs-5 col-sm-2 col-md-5 col-lg-5">
+                                                <div class="overflow-wrapper" data-barcolor="#ffffff" data-height="70" data-barwidth="7" data-barspacing="5" data-values="[15, 18, 14, 17, 19, 17, 20, 17,10]" data-type="bar" data-chart="sparkline"> </div>
+                                            </div>
+                                            <div class="col-xs-7 col-sm-9 col-md-7 col-lg-7"> <span class="count-item" data-count="92">0</span><span>K Friends</span> <span class="show"><span class="count-item" data-count="580">0</span> Followers</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="btn-linkedin mrgn-b-lg fa-linkedin prtm-card-box">
+                                        <div class="row pad-all-lg">
+                                            <div class="col-xs-5 col-sm-2 col-md-5 col-lg-5">
+                                                <div class="overflow-wrapper" data-barcolor="#ffffff" data-height="70" data-barwidth="7" data-barspacing="5" data-values="[15, 18, 14, 17, 19, 17, 20, 17,10]" data-type="bar" data-chart="sparkline"> </div>
+                                            </div>
+                                            <div class="col-xs-7 col-sm-9 col-md-7 col-lg-7"> <span class="count-item" data-count="79">0</span><span>K Friends</span> <span class="show"><span class="count-item" data-count="452">0</span> Followers</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="bg-danger mrgn-b-lg fa-google prtm-card-box">
+                                        <div class="row pad-all-lg">
+                                            <div class="col-xs-5 col-sm-2 col-md-5 col-lg-5">
+                                                <div class="overflow-wrapper" data-barcolor="#ffffff" data-height="70" data-barwidth="7" data-barspacing="5" data-values="[15, 18, 14, 17, 19, 17, 20, 17,10]" data-type="bar" data-chart="sparkline"> </div>
+                                            </div>
+                                            <div class="col-xs-7 col-sm-9 col-md-7 col-lg-7"> <span class="count-item" data-count="98">0</span><span>K Friends</span> <span class="show"><span class="count-item" data-count="45">0</span> Followers</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 full-col-lg-md">
+                            <div class="prtm-card-box bg-warning base-reverse pad-all-lg mrgn-b-lg">
+                                <div class="prtm-block-title mrgn-b-lg">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-8 col-lg-8">
+                                            <h3 class="base-reverse">Important Contact</h3> </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-4 col-lg-4 text-right"> <a href="#/" class="base-reverse font-lg fw-light">Add +</a> </div>
+                                    </div>
+                                </div>
+                                <div class="prtm-block-content slider-custom fw-light">
+                                    <div data-slider="slick" data-slidestoshow="2" data-slidestoscroll="1" data-arrows="true" data-autoplay="true" data-speed="3000">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-5 col-md-3 col-lg-5">
+                                                <div class="feature-thumb-box"> <img class="img-responsive display-ib img-circle" src="assets/img/register-user-1.jpg" width="100" height="100" alt="Slider Img"> </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-7 col-md-9 col-lg-7">
+                                                <span class="fw-light mrgn-b-xs show">Roger Waters</span>
+                                                <span class="show">Project Manager</span>
+                                                <a href="tel:+1 (612) 222 8989" class="show">+1 (612) 222 8989</a>
+                                                <a href="mailto:mail@domain.com" class="show">mail@domain.com</a>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-5 col-md-3 col-lg-5">
+                                                <div class="feature-thumb-box"> <img class="img-responsive display-ib img-circle" src="assets/img/register-user-2.jpg" width="100" height="100" alt="Slider Img"> </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-7 col-md-9 col-lg-7">
+                                                <span class="fw-light mrgn-b-xs show">Tyron Black</span>
+                                                <span class="show">Sr.Developer</span>
+                                                <a href="tel:+1 (612) 222 8989" class="show">+1 (612) 222 8989</a>
+                                                <a href="mailto:mail@domain.com" class="show">mail@domain.com</a>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-5 col-md-3 col-lg-5">
+                                                <div class="feature-thumb-box"> <img class="img-responsive display-ib img-circle" src="assets/img/register-user-3.jpg" width="100" height="100" alt="Slider Img"> </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-7 col-md-9 col-lg-7">
+                                                <span class="fw-light mrgn-b-xs show">Emma Rose</span>
+                                                <span class="show">HR Manager</span>
+                                                <a href="tel:+1 (612) 222 8989" class="show">+1 (612) 222 8989</a>
+                                                <a href="mailto:mail@domain.com" class="show">mail@domain.com</a>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-5 col-md-3 col-lg-5">
+                                                <div class="feature-thumb-box"> <img class="img-responsive display-ib img-circle" src="assets/img/register-user-4.jpg" width="100" height="100" alt="Slider Img"> </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-7 col-md-9 col-lg-7">
+                                                <span class="fw-light mrgn-b-xs show">Emily Watson</span>
+                                                <span class="show">Team Member</span>
+                                                <a href="tel:+1(612)222 8989" class="show">+1 (612) 222 8989</a>
+                                                <a href="mailto:mail@domain.com" class="show">mail@domain.com</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 half-col-lg-md">
+                            <div class="prtm-block">
+                                <div class="prtm-block-title mrgn-b-lg">
+                                    <div class="caption">
+                                        <h3>To Do List</h3> </div>
+                                    <div class="contextual-link">
+                                        <div class="dropdown display-ib"> <a href="javascript:;" class="mrgn-l-xs" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="false"><i class="fa fa-cog fa-lg base-dark"></i></a>
+                                            <ul class="dropdown-menu dropdown-arrow dropdown-menu-right">
+                                                <li>
+                                                    <a href="javascript:;"> <i class="fa fa-eye"></i> <span class="mrgn-l-sm">View</span> </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;"> <i class="fa fa-pencil"></i> <span class="mrgn-l-sm">Edit </span> </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;"> <i class="fa fa-trash-o"></i> <span class="mrgn-l-sm">Delete</span> </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="prtm-to-do">
+                                    <div class="slimscrollbar" style="height: 400px;" data-always-visible="1" data-rail-visible="0">
+                                        <ul class="list-unstyled border-list-xs mrgn-all-none">
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"> <span class="to-do-icon pull-left">
+                                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                    </span> <span class="list-description pull-left text-capitalize">Research new tools and softwares to do things faster.</span> </div>
+                                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-right to-do-check-box"> <a href="javascript:;" class="text-success mrgn-r-xs"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                                        <a href="javascript:;" class="text-danger"> <i class="fa fa-times" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"> <span class="to-do-icon pull-left">
+                                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                    </span> <span class="list-description pull-left text-capitalize"><del>What can be pushed off till tonight?</del></span> </div>
+                                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-right to-do-check-box"> <a href="javascript:;" class="text-success mrgn-r-xs"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                                        <a href="javascript:;" class="text-danger"> <i class="fa fa-times" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"> <span class="to-do-icon pull-left">
+                                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                    </span> <span class="list-description pull-left text-capitalize">Call Mom in the morning.</span> </div>
+                                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-right to-do-check-box"> <a href="javascript:;" class="text-success mrgn-r-xs"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                                        <a href="javascript:;" class="text-danger"> <i class="fa fa-times" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"> <span class="to-do-icon pull-left">
+                                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                    </span> <span class="list-description pull-left text-capitalize">Pay phone bill.</span> </div>
+                                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-right to-do-check-box"> <a href="javascript:;" class="text-success mrgn-r-xs"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                                        <a href="javascript:;" class="text-danger"> <i class="fa fa-times" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"> <span class="to-do-icon pull-left">
+                                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                    </span> <span class="list-description pull-left text-capitalize">Take medicine after breakfast.</span> </div>
+                                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-right to-do-check-box"> <a href="javascript:;" class="text-success mrgn-r-xs"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                                        <a href="javascript:;" class="text-danger"> <i class="fa fa-times" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9"> <span class="to-do-icon pull-left">
+                                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                                    </span> <span class="list-description pull-left text-capitalize">Get Up and go for a morning walk.</span> </div>
+                                                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 text-right to-do-check-box"> <a href="javascript:;" class="text-success mrgn-r-xs"><i class="fa fa-check" aria-hidden="true"></i></a>
+                                                        <a href="javascript:;" class="text-danger"> <i class="fa fa-times" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 half-col-lg-md">
+                            <div class="prtm-block">
+                                <div class="prtm-block-title mrgn-b-lg">
+                                    <div class="caption">
+                                        <h3>User Agent</h3> </div>
+                                    <div class="contextual-link">
+                                        <div class="dropdown"> <a href="javascript:;" class="mrgn-l-xs more-btn" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="true">more<i class="fa fa-angle-down"></i></a>
+                                            <ul class="dropdown-menu dropdown-icon pull-right">
+                                                <li>
+                                                    <a href="javascript:;"> <i class="fa fa-eye"></i> <span class="mrgn-l-sm">View</span> </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;"> <i class="fa fa-pencil"></i> <span class="mrgn-l-sm">Edit </span> </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;"> <i class="fa fa-trash-o"></i> <span class="mrgn-l-sm">Delete</span> </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="prtm-block-content text-center">
+                                    <div class="dashboard3-browser mrgn-b-md"></div>
+                                    <div class="donut-legend">
+                                        <ul class="list-inline">
+                                            <li> <i class="fa fa-circle text-success mrgn-r-xs"></i>Firefox </li>
+                                            <li> <i class="fa fa-circle text-primary mrgn-r-xs"></i>Chrome </li>
+                                            <li> <i class="fa fa-circle text-secondary mrgn-r-xs"></i>Opera </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-4 full-col-lg-md">
+                            <div class="prtm-card-box bg-inverse pad-all-lg mrgn-b-lg">
+                                <div class="prtm-block-title mrgn-b-lg">
+                                    <div class="caption">
+                                        <h4>Email Statistics</h4> </div>
+                                    <div class="contextual-link">
+                                        <div class="dropdown display-ib"> <a href="javascript:;" class="mrgn-l-xs" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" aria-expanded="true"><i class="fa fa-cog fa-lg base-reverse"></i></a>
+                                            <ul class="dropdown-menu dropdown-arrow dropdown-menu-right">
+                                                <li>
+                                                    <a href="javascript:;"> <i class="fa fa-eye"></i> <span class="mrgn-l-sm">View</span> </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;"> <i class="fa fa-pencil"></i> <span class="mrgn-l-sm">Edit </span> </a>
+                                                </li>
+                                                <li>
+                                                    <a href="javascript:;"> <i class="fa fa-trash-o"></i> <span class="mrgn-l-sm">Delete</span> </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="prtm-block-content">
+                                    <div id="dashboard3-email" class="chart"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

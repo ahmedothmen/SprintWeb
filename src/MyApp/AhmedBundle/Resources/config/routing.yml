@@ -1,0 +1,71 @@
+my_app_ahmed_homepage:
+    path:     /pro
+    defaults: { _controller: MyAppAhmedBundle:Default:index }
+my_app_ahmed_nbreReservation:
+    path:     /nbre
+    defaults: { _controller: MyAppAhmedBundle:Default:nbreReservation }
+my_app_ahmed_voir_detail:
+    path:     /voirDetail{id}
+    defaults: { _controller: MyAppAhmedBundle:Default:voirDetail }
+
+my_app_ahmed_Propriete_Disponible:
+    path:     /proprietDesponible
+    defaults: { _controller: MyAppAhmedBundle:Default:proprieteDisponible }
+
+my_app_ahmed_Propriete_Reserver:
+    path:     /reserver{id}
+    defaults: { _controller: MyAppAhmedBundle:Default:reserver }
+my_app_ahmed_Demande_Reservation:
+    path:     /demande
+    defaults: { _controller: MyAppAhmedBundle:Default:listDemandeRersevation}
+my_app_ahmed_valider_Demande_Reservation:
+    path:     /valider{id}
+    defaults: { _controller: MyAppAhmedBundle:Default:validerDemande}
+my_app_ahmed_refuser_Demande_Reservation:
+    path:     /refuser{id}
+    defaults: { _controller: MyAppAhmedBundle:Default:supprimer}
+my_app_ahmed_list_demande_by_propriete:
+    path:     /demandebypropriete{id}
+    defaults: { _controller: MyAppAhmedBundle:Default:listDemandeRersevationByPropriete}
+my_app_ahmed_Menu_Droit:
+    path:     /menu
+    defaults: { _controller: MyAppAhmedBundle:Default:menuDroit}
+my_app_ahmed_listReservation:
+    path:     /listReservation
+    defaults: { _controller: MyAppAhmedBundle:Default:ListReservationByPropriete}
+my_app_ahmed_listReservationByPropriete:
+   path:     /listReservationByPropriete{id}
+   defaults: { _controller: MyAppAhmedBundle:Default:ListReservationByIdPropriete}
+my_app_ahmed_Facture:
+   path:     /facture
+   defaults: { _controller: MyAppAhmedBundle:Default:facture}
+my_app_ahmed_Liberer_Propriete:
+   path:     /Liberer
+   defaults: { _controller: MyAppAhmedBundle:Default:libererPropriete}
+
+my_app_ahmed_AffichageFacture:
+   path:     /AfficherFcature{id}
+   defaults: { _controller: MyAppAhmedBundle:Default:affichageFacture}
+my_app_ahmed_Mes_Reservation:
+   path:     /mesReservation
+   defaults: { _controller: MyAppAhmedBundle:Default:mesReservation}
+my_app_ahmed_Details_Reservation1:
+   path:     /voirDetailReservation{id}
+   defaults: { _controller: MyAppAhmedBundle:Default:voirDetailReservation}
+my_app_ahmed_reservation_excel:
+   path:     /reservationExel
+   defaults: { _controller: MyAppAhmedBundle:Default:importerReservationExcel}
+my_app_ahmed_annuler_reservation:
+   path:     /annulerReservation{id}
+   defaults: { _controller: MyAppAhmedBundle:Default:annulerReservation}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,38 @@
+host_experience_homepage:
+    path:     /
+    defaults: { _controller: HostExperienceBundle:Default:index }
+
+
+
+exp_add:
+    path:     /add
+    defaults: { _controller: HostExperienceBundle:Exp:add }
+exp_profile:
+    path:     /profile
+    defaults: { _controller: HostExperienceBundle:Exp:profile }
+show_exp:
+    path:     /show_exp
+    defaults: { _controller: HostExperienceBundle:Exp:show_exp }
+edit_exp:
+    path:     /edit_exp/{idd}
+    defaults: { _controller: HostExperienceBundle:Exp:edit_exp }
+delete_exp:
+    path:     /delete_exp/{idd}
+    defaults: { _controller: HostExperienceBundle:Exp:delete_exp }
+list_exp:
+    path:     /list_exp
+    defaults: { _controller: HostExperienceBundle:Exp:exp_list }
+Details_exp:
+    path:     /details_exp/{idexp}
+    defaults: { _controller: HostExperienceBundle:Exp:details }
+sort_alphab:
+    path: /sortal
+    defaults: { _controller: HostExperienceBundle:Exp:sortalph }
+sort_prix:
+    path: /sortap
+    defaults: { _controller: HostExperienceBundle:Exp:sortalprix}
+stat:
+    path: /stat
+    defaults: { _controller: HostExperienceBundle:stat:stat}
+
+
